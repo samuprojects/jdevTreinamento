@@ -1,26 +1,30 @@
 package br.com.cursojsf;
 
-import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@RequestScoped // após inserir o nome na lista é encerrado, por isso ao informar outro nome a lista é iniciada novamente.
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
 	private String nome;
-	private String sobrenome;
+	
+	private List<String> nomes = new ArrayList<>() ;
 
-	private String nomeCompleto;
-
-	public String mostrarNome() {
-		nomeCompleto = nome + " " + sobrenome;
+	public String addNome() {
+		nomes.add(nome);
 		return "";
 	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+	
+	public void setNomes(List<String> nomes) {
+		this.nomes = nomes;
 	}
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
+	
+	public List<String> getNomes() {
+		return nomes;
 	}
 
 	public String getNome() {
@@ -29,14 +33,6 @@ public class PessoaBean {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
 	}
 
 }
