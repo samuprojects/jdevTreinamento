@@ -15,15 +15,18 @@
 
 		<h1>Olá JSF</h1>
 
-		<h:inputText id="campoNome" value="#{pessoaBean.nome}"> test </h:inputText>
+		Nome:
+		<h:inputText id="campoNome" value="#{pessoaBean.nome}"/>
 
-		<br />
+		<br/>
+		Sobrenome:
+		<h:inputText id="sobrenome" value="#{pessoaBean.sobrenome}"/>
 
-		<h:outputText value="Teste jsf" />
+		<br/>
+		<h:outputText value="#{pessoaBean.nomeCompleto}"/>
+		<br/>
 
-		<br />
-
-		<h:commandButton value="Botão" />
+		<h:commandButton value="Mostrar Nome" action="#{pessoaBean.mostrarNome}"/>
 
 	</h:form>
 
