@@ -3,10 +3,10 @@ package br.com.cursojsf;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@SessionScoped // agora cada sessão do usuário, ou navegador, mantém os dados em tela mesmo em caso de redirecionamento de página. Perde a informação apenas se deslogar ou fechar o navegador.
+@ApplicationScoped // agora independente de fechar o navegador, ou usuário encerrar, a informação é compartilhada com todos na aplicação e mantido em tela.
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
