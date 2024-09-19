@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
-@ViewScoped // agora enquanto a tela estiver aberta será possível lançar dados na lista mantendo as informações em tela, em caso de redirecionamento os dados são perdidos
+@SessionScoped // agora cada sessão do usuário, ou navegador, mantém os dados em tela mesmo em caso de redirecionamento de página. Perde a informação apenas se deslogar ou fechar o navegador.
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
