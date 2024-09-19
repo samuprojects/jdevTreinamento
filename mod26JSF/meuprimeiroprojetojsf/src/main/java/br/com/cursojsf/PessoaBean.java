@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
-@RequestScoped // após inserir o nome na lista é encerrado, por isso ao informar outro nome a lista é iniciada novamente.
+@ViewScoped // agora enquanto a tela estiver aberta será possível lançar dados na lista mantendo as informações em tela, em caso de redirecionamento os dados são perdidos
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
