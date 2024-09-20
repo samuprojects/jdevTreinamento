@@ -24,9 +24,10 @@ public class PessoaBean {
 		
 		if (nomes.size() > 3) {
 			commandButton.setDisabled(true); // por exemplo se lançar mais de três nomes o botão de lançamento é desabilitado.
+			return "paginanavegada"; // condição para navegação dinâmica
 		}
 		
-		return "";
+		return ""; // null ou vazio permanece na mesma página -> outcome
 	}
 	
 	public void setCommandButton(HtmlCommandButton commandButton) {
