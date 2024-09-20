@@ -18,5 +18,15 @@
     </managed-bean>
     
     -->
+    
+    
+    <!-- a navegação explícita em JSF ocorre com a utilização de ajustes no arquivo faces-config.xml, e no index deve usar a extensão original .xhtml -->
+    <navigation-rule>
+    	<from-view-id>/index.xhtml</from-view-id>
+    	<navigation-case>
+    	 <from-outcome>explicita</from-outcome>
+    	 <to-view-id>/navegacaoexplicita.jsf</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
 
 </faces-config>
