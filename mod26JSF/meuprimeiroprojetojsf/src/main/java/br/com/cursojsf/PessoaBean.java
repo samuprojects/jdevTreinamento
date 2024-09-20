@@ -24,7 +24,7 @@ public class PessoaBean {
 		
 		if (nomes.size() > 3) {
 			commandButton.setDisabled(true); // por exemplo se lançar mais de três nomes o botão de lançamento é desabilitado.
-			return "paginanavegada"; // condição para navegação dinâmica
+			return "paginanavegada?faces-redirect=true"; // condição para navegação dinâmica -- ?faces-redirect=true exibe o redirecionamento da página na URL
 		}
 		
 		return ""; // null ou vazio permanece na mesma página -> outcome
