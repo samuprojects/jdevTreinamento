@@ -6,6 +6,13 @@
 <h:head>
 
 	<title>Olá jsf</title>
+	
+	<script>
+		function alterarValorDoCampo() {
+			var campo = document.getElementById('formPessoa:nome');
+			campo.value = 'eu cliquei no campo :)';
+		}
+	</script>
 
 </h:head>
 
@@ -14,8 +21,14 @@
 	<h:form id="formPessoa">
 
 		<h1>Olá JSF página index.jsf</h1>
-		<h:commandButton value="Navegar" action="primeirapagina"/>
-		<h:commandButton value="Navegar Explicita" action="explicita"/>
+		
+		<h:inputText id="nome"/>
+		<h:commandButton value="Clicar" onclick="alterarValorDoCampo();"/>
+		
+		<br/>
+		<br/>
+		<h:commandButton value="Navegar" action="primeirapagina" />
+		<h:commandButton value="Navegar Explicita" action="explicita" />
 
 
 	</h:form>
