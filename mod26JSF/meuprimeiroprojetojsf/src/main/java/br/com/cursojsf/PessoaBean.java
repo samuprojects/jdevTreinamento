@@ -13,6 +13,10 @@ public class PessoaBean {
 
 	private String nome;
 	
+	private String senha;
+	
+	private String texto;
+	
 	private HtmlCommandButton commandButton; // como nossa classe possui um Bean gerenciado, de qualquer tipo, nesse caso o ViewScoped, podemos fazer uma ponte (binding) e controlar um componente do front end, nesse exemplo o botão
 	// Não é muito recomendado fazer isso pois, entre outras coisas, ocorre o acoplamento do componente da interface à lógica do bean.
 	// Isso pode dificultar a manutenção e os testes, haverá necessidade de garantir que o bean sempre tenha acesso ao componente.
@@ -30,6 +34,22 @@ public class PessoaBean {
 		return ""; // null ou vazio permanece na mesma página -> outcome
 	}
 	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
 	public void setCommandButton(HtmlCommandButton commandButton) {
 		this.commandButton = commandButton;
 	}
