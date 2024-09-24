@@ -22,7 +22,7 @@
 
 		<h1>Olá JSF página index.jsf</h1>
 		
-		<h:inputText id="nome"/>
+		<h:inputText id="nome" onclick="this.value='troquei o valor'" onchange="this.value = this.value.toUpperCase();"/>
 		<h:commandButton value="Clicar" onclick="alterarValorDoCampo();"/>
 		
 		<br/>
