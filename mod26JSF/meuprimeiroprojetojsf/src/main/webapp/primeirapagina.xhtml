@@ -14,21 +14,12 @@
 	<h:form id="formPessoa">
 
 		<h1>Olá JSF</h1>
-
-		Nome:
-		<h:inputText id="campoNome" value="#{pessoaBean.nome}" />
-		<h:inputSecret id="senha" value="#{pessoaBean.senha}"/>
-		<h:inputTextarea id="texto" value="#{pessoaBean.texto}" rows="10" cols="10"/>
 		
-
-		<h:commandButton binding="#{pessoaBean.commandButton}" value="Adicionar Nome" action="#{pessoaBean.addNome}" />
-
-		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
-			<h:column>
-				<h:outputText value="#{nome}" />
-			</h:column>
-
-		</h:dataTable>
+		<h:outputText value="saida de texto" /> <!-- Utilizado para exibição -->
+		<br/>
+		
+		<h:outputLabel value="Nome:" for="camponome"/>
+		<h:inputText id="camponome" value="#{pessoaBean.nome}"/> <!-- Utilizado para gravação -->
 
 	</h:form>
 
