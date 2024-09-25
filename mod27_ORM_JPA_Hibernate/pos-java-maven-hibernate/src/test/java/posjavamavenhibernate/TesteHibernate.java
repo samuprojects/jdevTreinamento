@@ -44,4 +44,22 @@ public class TesteHibernate {
 		
 		System.out.println(pessoa);
 	}
+	
+	@Test
+	public void testeUpdate() {
+		
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(1L, UsuarioPessoa.class);
+		
+		pessoa.setIdade(99);
+		pessoa.setNome("Nome atualizado Hibernate");
+		pessoa.setSenha("sasas");
+		pessoa.setEmail("teste@example.com");
+		pessoa.setSobrenome("Java FX");
+		
+		pessoa = daoGeneric.updateMerge(pessoa);
+		
+		System.out.println(pessoa);
+	}
 }
