@@ -1,5 +1,7 @@
 package posjavamavenhibernate;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import dao.DaoGeneric;
@@ -15,7 +17,7 @@ public class TesteHibernate {
 		
 		pessoa.setIdade(45);
 		pessoa.setLogin("teste");
-		pessoa.setNome("Sam Dev");
+		pessoa.setNome("Andre Dev");
 		pessoa.setSenha("123");
 		pessoa.setSobrenome("Java");
 		pessoa.setEmail("samdev@example.com");
@@ -71,5 +73,18 @@ public class TesteHibernate {
 		UsuarioPessoa pessoa = daoGeneric.pesquisar(1L, UsuarioPessoa.class);
 		
 		daoGeneric.deletarPorId(pessoa);
+	}
+	
+	@Test
+	public void testeConsultar() {
+		
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		List<UsuarioPessoa> list = daoGeneric.listar(UsuarioPessoa.class);
+		
+		for (UsuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+			System.out.println("-----------------------------------------------------");
+		}
 	}
 }
