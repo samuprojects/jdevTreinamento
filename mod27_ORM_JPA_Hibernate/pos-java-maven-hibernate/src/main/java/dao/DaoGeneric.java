@@ -41,4 +41,15 @@ public class DaoGeneric<E> {
 		
 		return e;
 	}
+	
+	public void deletarPorId(E entidade) {
+		
+		Object id = HibernateUtil.getPrimaryKey(entidade);
+		
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		entityManager.createNativeQuery("delete from " + entidade.getClass().getSimpleName().toLowerCase() + " where id=" + id).executeUpdate(); // faz delete
+		transaction.commit(); // gravar alteração no banco
+	}
 }
