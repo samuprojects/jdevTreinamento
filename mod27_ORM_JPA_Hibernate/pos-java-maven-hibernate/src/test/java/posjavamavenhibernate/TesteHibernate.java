@@ -15,12 +15,12 @@ public class TesteHibernate {
 		
 		UsuarioPessoa pessoa = new UsuarioPessoa();
 		
-		pessoa.setIdade(45);
+		pessoa.setIdade(30);
 		pessoa.setLogin("teste");
-		pessoa.setNome("Andre Dev");
+		pessoa.setNome("John Dev");
 		pessoa.setSenha("123");
-		pessoa.setSobrenome("Java");
-		pessoa.setEmail("samdev@example.com");
+		pessoa.setSobrenome("Silva");
+		pessoa.setEmail("johndev@example.com");
 		
 		daoGeneric.salvar(pessoa);
 	}
@@ -106,6 +106,20 @@ public class TesteHibernate {
 		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
 		@SuppressWarnings("unchecked")
 		List<UsuarioPessoa> list = daoGeneric.getEntityManager().createQuery(" from UsuarioPessoa order by nome").setMaxResults(3).getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : list) {
+			System.out.println(usuarioPessoa);
+		}
+	}
+	
+	@Test
+	public void testeQueryListParameter() {
+		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
+		
+		@SuppressWarnings("unchecked")
+		List<UsuarioPessoa> list = daoGeneric.getEntityManager().createQuery("from UsuarioPessoa where nome = :nome or sobrenome = :sobrenome")
+		.setParameter("nome", "Sam Dev")
+		.setParameter("sobrenome", "Silva").getResultList();
 		
 		for (UsuarioPessoa usuarioPessoa : list) {
 			System.out.println(usuarioPessoa);
