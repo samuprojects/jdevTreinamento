@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import dao.DaoGeneric;
+import model.TelefoneUser;
 import model.UsuarioPessoa;
 
 public class TesteHibernate {
@@ -159,5 +160,44 @@ public class TesteHibernate {
 		for (UsuarioPessoa usuarioPessoa : list) {
 			System.out.println(usuarioPessoa);
 		}
+	}
+	
+	@SuppressWarnings("all")
+	@Test
+	public void testeGravarTelefone() {
+		DaoGeneric daoGeneric = new DaoGeneric();
+		
+		UsuarioPessoa pessoa = (UsuarioPessoa) daoGeneric.pesquisar(2L, UsuarioPessoa.class);
+		
+		TelefoneUser telefoneUser = new TelefoneUser();
+		
+		telefoneUser.setTipo("Casa");
+		telefoneUser.setNumero("987654321");
+		telefoneUser.setUsuarioPessoa(pessoa);
+		
+		daoGeneric.salvar(telefoneUser);
+	}
+	
+	@SuppressWarnings("all")
+	@Test
+	public void testeConsultarTelefones() {
+	    DaoGeneric daoGeneric = new DaoGeneric();
+	    
+	    UsuarioPessoa pessoa = (UsuarioPessoa) daoGeneric.pesquisar(2L, UsuarioPessoa.class);
+	    
+	    if (pessoa != null && pessoa.getTelefoneUsers() != null) {
+	        for (TelefoneUser fone : pessoa.getTelefoneUsers()) {
+	            if (fone != null) {
+	                System.out.println(fone.getNumero());
+	                System.out.println(fone.getTipo());
+	                System.out.println(fone.getUsuarioPessoa() != null ? fone.getUsuarioPessoa().getNome() : "Usuário Pessoa é nulo");
+	                System.out.println("--------------------------------------");
+	            } else {
+	                System.out.println("TelefoneUser é nulo");
+	            }
+	        }
+	    } else {
+	        System.out.println("Pessoa é nula ou não possui telefones");
+	    }
 	}
 }
