@@ -1,77 +1,38 @@
 package br.com.cursojsf;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.html.HtmlCommandButton;
+
+import br.com.dao.DaoGeneric;
+import br.com.entidades.Pessoa;
 
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
-	private String nome;
-	
-	private String senha;
-	
-	private String texto;
-	
-	private HtmlCommandButton commandButton; // como nossa classe possui um Bean gerenciado, de qualquer tipo, nesse caso o ViewScoped, podemos fazer uma ponte (binding) e controlar um componente do front end, nesse exemplo o botão
-	// Não é muito recomendado fazer isso pois, entre outras coisas, ocorre o acoplamento do componente da interface à lógica do bean.
-	// Isso pode dificultar a manutenção e os testes, haverá necessidade de garantir que o bean sempre tenha acesso ao componente.
-	
-	private List<String> nomes = new ArrayList<>() ;
+	private Pessoa pessoa = new Pessoa();
+	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 
-	public String addNome() {
-		nomes.add(nome);
+	public String salvar() {
+		daoGeneric.salvar(pessoa);
 		
-		if (nomes.size() > 3) {
-			commandButton.setDisabled(true); // por exemplo se lançar mais de três nomes o botão de lançamento é desabilitado.
-			return "paginanavegada?faces-redirect=true"; // condição para navegação dinâmica -- ?faces-redirect=true exibe o redirecionamento da página na URL
-		}
-		
-		return ""; // null ou vazio permanece na mesma página -> outcome
-	}
-	
-	public String getSenha() {
-		return senha;
+		return "";
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public String getTexto() {
-		return texto;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public DaoGeneric<Pessoa> getDaoGeneric() {
+		return daoGeneric;
 	}
 
-	public void setCommandButton(HtmlCommandButton commandButton) {
-		this.commandButton = commandButton;
-	}
-	
-	public HtmlCommandButton getCommandButton() {
-		return commandButton;
-	}
-	
-	public void setNomes(List<String> nomes) {
-		this.nomes = nomes;
-	}
-	
-	public List<String> getNomes() {
-		return nomes;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDaoGeneric(DaoGeneric<Pessoa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
 	}
 
 }
