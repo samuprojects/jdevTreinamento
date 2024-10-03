@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    <!-- O faces-config é um arquivo de configuração para um projeto JSF
+         Por exemplo, poderia utilizar essa parte para combinar o uso do JSF junto do Spring, dentre outras utilidades avançadas ou específicas
+         Além disso outras coisas simples podem ser configuradas aqui como, por exemplo, deixar de usar as anotações do JSF para ajustar nesse arquivo -->
+    
+    <!-- ao descomentar as linhas abaixo pode remover as anotações na classe PessoaBean
+    
+    <managed-bean>
+    	<managed-bean-name>pessoaBean</managed-bean-name>
+    	<managed-bean-class>br.com.cursojsf.PessoaBean</managed-bean-class>
+    	<managed-bean-scope>view</managed-bean-scope>    
+    </managed-bean>
+    
+    -->
+    
+    
+    <!-- a navegação explícita em JSF ocorre com a utilização de ajustes no arquivo faces-config.xml, e no index deve usar a extensão original .xhtml -->
+    <navigation-rule>
+    	<from-view-id>/index.xhtml</from-view-id>
+    	<navigation-case>
+    	 <from-outcome>explicita</from-outcome>
+    	 <to-view-id>/navegacaoexplicita.jsf</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+</faces-config>
