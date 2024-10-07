@@ -69,10 +69,10 @@
 		
 		<h:outputLabel/>
 		<h:panelGroup>
-			<h:commandButton value="Novo" action="#{pessoaBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo"/>
-			<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/Save_37110.png" title="Salvar"/>
-			<h:commandButton value="Remover" action="#{pessoaBean.remove}"/>
-			<h:commandButton value="Limpar" type="reset"/>
+			<h:commandButton style="margin-right:20px" value="Novo" action="#{pessoaBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo"/>
+			<h:commandButton style="margin-right:20px" value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/Save_37110.png" title="Salvar"/>
+			<h:commandButton style="margin-right:20px" value="Remover" action="#{pessoaBean.remove}" image="/resources/img/1486564399-close_81512.png" title="Excluir" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}"/>
+			<h:commandButton value="Limpar" type="reset" image="/resources/img/Clear_37294.png" title="Limpar"/>
 		</h:panelGroup>
 		
 		</h:panelGrid>		
@@ -106,7 +106,7 @@
 				</h:commandLink>
 			</h:column>
 				
-			<h:column>	
+			<h:column rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">	
 				<f:facet name="header">Excluir</f:facet>
 				<h:commandLink action="#{pessoaBean.remove}" title="Excluir">
 					<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"></f:setPropertyActionListener>
