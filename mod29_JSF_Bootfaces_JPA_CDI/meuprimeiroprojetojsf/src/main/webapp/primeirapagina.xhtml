@@ -12,7 +12,13 @@
 
 <h:body>
 
-	<h:form id="formPessoa">
+	<h:form>
+		<h:commandLink value="Administração" action="lancamento" style="margin-left:1cm"/>
+		<h:commandLink value="Lançamentos" action="primeirapagina" style="margin-left:1cm"/>
+		<h:commandLink value="Trocar Usuário" action="index" style="margin-left:1cm"/>
+	</h:form>
+
+	<h:form id="formPessoa" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 		
 		<h:panelGrid columns="2">
 		<f:facet name="header">
