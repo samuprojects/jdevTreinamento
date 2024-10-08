@@ -18,7 +18,7 @@
 		<h:commandLink value="Trocar Usuário" action="index" style="margin-left:1cm"/>
 	</h:form>
 
-	<h:form id="formLancamento" style="margin-top:22%; margin-left:40%">
+	<h:form id="formLancamento">
 	
 	<h:form>
 		<h:panelGrid columns="2">
@@ -42,10 +42,42 @@
 		<h:panelGroup>
 			<h:commandButton style="margin-right:20px" value="Novo" action="#{lancamentoBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo"/>
 			<h:commandButton style="margin-right:20px" value="Salvar" action="#{lancamentoBean.salvar}" image="/resources/img/Save_37110.png" title="Salvar"/>
-			<h:commandButton style="margin-right:20px" value="Remover" action="#{lancamentoBean.remove}" image="/resources/img/1486564399-close_81512.png" title="Excluir"/>
+			<h:commandButton style="margin-right:20px" value="Remover" action="#{lancamentoBean.remover}" image="/resources/img/1486564399-close_81512.png" title="Excluir"/>
 			<h:commandButton value="Limpar" type="reset" image="/resources/img/Clear_37294.png" title="Limpar"/>
 		</h:panelGroup>
 		</h:panelGrid>
+		
+		
+		<h:dataTable value="#{lancamentoBean.lancamentos}" var="lanc" border="3">
+			<f:facet name="header">Lista de Lançamentos</f:facet>
+			
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputLabel value="#{lanc.id}"/>			
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nota</f:facet>
+				<h:outputLabel value="#{lanc.numeroNotaFiscal}"/>			
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Origem</f:facet>
+				<h:outputLabel value="#{lanc.empresaOrigem}"/>			
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Destino</f:facet>
+				<h:outputLabel value="#{lanc.empresaDestino}"/>			
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Usuário</f:facet>
+				<h:outputLabel value="#{lanc.usuario.nome}"/>			
+			</h:column>
+		
+		
+		</h:dataTable>
 	</h:form>
 		
 	</h:form>
