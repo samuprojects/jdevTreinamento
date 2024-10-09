@@ -82,6 +82,16 @@
 			<f:selectItem itemValue="E" itemLabel="Especialista"/>
 		</h:selectOneRadio>
 		
+		<h:outputLabel value="Linguagens:"/>
+		<h:selectManyCheckbox value="#{pessoaBean.pessoa.linguagens}">
+			<f:selectItem itemValue="1" itemLabel="Java"/>
+			<f:selectItem itemValue="2" itemLabel="PHP"/>
+			<f:selectItem itemValue="3" itemLabel="Python"/>
+			<f:selectItem itemValue="4" itemLabel="C#"/>
+			<f:selectItem itemValue="5" itemLabel="Cobol"/>
+			
+		</h:selectManyCheckbox>
+		
 		<h:outputLabel/>
 		<h:panelGroup>
 			<h:commandButton style="margin-right:20px" value="Novo" action="#{pessoaBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo"/>
