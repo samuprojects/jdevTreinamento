@@ -20,7 +20,6 @@
 
 	<h:form id="formLancamento">
 	
-	<h:form>
 		<h:panelGrid columns="2">
 			<f:facet name="header">
 				<h:outputText value="Lançamentos"/>
@@ -75,10 +74,25 @@
 				<f:facet name="header">Usuário</f:facet>
 				<h:outputLabel value="#{lanc.usuario.nome}"/>			
 			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink title="Editar">
+					<h:graphicImage value="/resources/img/edit-validated_40458.png"/>
+					<f:setPropertyActionListener value="#{lanc}" target="#{lancamentoBean.lancamento}"/>
+				</h:commandLink>					
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Excluir</f:facet>
+				<h:commandLink action="#{lancamentoBean.remover}" title="Excluir">
+					<h:graphicImage value="/resources/img/1486564399-close_81512.png"/>
+					<f:setPropertyActionListener value="#{lanc}" target="#{lancamentoBean.lancamento}"/>
+				</h:commandLink>					
+			</h:column>
 		
 		
 		</h:dataTable>
-	</h:form>
 		
 	</h:form>
 
