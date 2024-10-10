@@ -45,8 +45,8 @@
 		</h:selectOneMenu>
 		
 		<h:outputLabel value="Nascimento:"/>
-		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}">
-			<f:convertDateTime pattern="dd/MM/yyyy" dateStyle="full" locale="pt_BR"/>
+		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Formato de data digitado é inválido!">
+			<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Sao_Paulo"/> <!-- GMT-03:00 não funcionou como na aula -->
 		</h:inputText>
 		
 		<h:outputLabel value="Frameworks:"/>
