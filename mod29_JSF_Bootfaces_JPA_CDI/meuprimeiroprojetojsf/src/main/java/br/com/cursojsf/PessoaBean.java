@@ -39,6 +39,13 @@ public class PessoaBean {
 	}
 
 	public String novo() {
+		// pode incluir algum processo antes de criar
+		pessoa = new Pessoa();
+		return "";
+	}
+	
+	public String limpar() {
+		// pode incluir algum processo antes do limpar
 		pessoa = new Pessoa();
 		return "";
 	}
