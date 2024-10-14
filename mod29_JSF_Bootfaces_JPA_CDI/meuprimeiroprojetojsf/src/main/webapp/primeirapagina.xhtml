@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui = "http://java.sun.com/jsf/facelets">
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 
@@ -28,17 +29,23 @@
 		<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/>
 		
 		<h:outputLabel value="Nome:"/>
-		<h:inputText value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Informe o nome do usuário" validatorMessage="Nome deve conter mínimo 4 letras">
+		<h:inputText value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Informe o nome do usuário" pt:placeholder="Informe o nome do usuário" validatorMessage="Nome deve conter mínimo 4 letras">
 			<f:validateLength minimum="4" maximum="50"/>
 		</h:inputText>
 		
 		<h:outputLabel value="Sobrenome:"/>
-		<h:inputText value="#{pessoaBean.pessoa.sobrenome}" />
+		<h:inputText value="#{pessoaBean.pessoa.sobrenome}" pt:placeholder="Informe o valor do campo"/>
 		
 		<h:outputLabel value="Idade:"/>
-		<h:inputText value="#{pessoaBean.pessoa.idade}" />
+		<h:inputText value="#{pessoaBean.pessoa.idade}" pt:placeholder="Informe a idade do usuário"/>
 		
-		<h:outputLabel value="Sexo:"/>
+		<h:outputLabel value="Cpf:"/>
+		<h:inputText value="#{pessoaBean.pessoa.cpf}" pt:placeholder="Informe um CPF válido"/>
+		
+		<h:outputLabel value="Título Eleitor:"/>
+		<h:inputText value="#{pessoaBean.pessoa.titEleitoral}" pt:placeholder="Informe um título Eleitoral válido"/>
+		
+		<h:outputLabel value="Sexo:" pt:placeholder="Informe o gênero do usuário"/>
 		
 		<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false">		
 			<f:selectItem itemValue="NAO" itemLabel="[-Selecione-]" noSelectionOption="true"/>
@@ -47,7 +54,7 @@
 		</h:selectOneMenu>
 		
 		<h:outputLabel value="Nascimento:"/>
-		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="Formato de data digitado é inválido!">
+		<h:inputText value="#{pessoaBean.pessoa.dataNascimento}" pt:placeholder="Informe data nascimento válida" converterMessage="Formato de data digitado é inválido!">
 			<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Sao_Paulo"/> <!-- GMT-03:00 não funcionou como na aula -->
 		</h:inputText>
 		
@@ -61,7 +68,7 @@
 			
 		</h:selectManyMenu>
 		
-		<h:outputLabel value="CEP:"/>
+		<h:outputLabel value="CEP:" pt:placeholder="Informe um CEP válido"/>
 		<h:inputText value="#{pessoaBean.pessoa.cep}">
 			<f:ajax event="blur" execute="@this" listener="#{pessoaBean.pesquisaCep}" render="logradouro complemento bairro uf unidade ibge gia"/>
 		</h:inputText>

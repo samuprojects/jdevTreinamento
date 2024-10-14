@@ -45,6 +45,10 @@ public class Pessoa implements Serializable {
 	
 	private Integer[] linguagens;
 	
+	private String cpf;
+	
+	private String titEleitoral;
+	
 	private String cep;
 	
 	private String logradouro;
@@ -62,6 +66,22 @@ public class Pessoa implements Serializable {
 	private String ibge;
 	
 	private String gia;
+	
+	public String getTitEleitoral() {
+		return titEleitoral;
+	}
+	
+	public void setTitEleitoral(String titEleitoral) {
+		this.titEleitoral = titEleitoral;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 	
 	public String getLogradouro() {
 		return logradouro;
