@@ -3,7 +3,6 @@ package br.com.cursojsf;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.servlet.http.HttpServletRequest;
 
 import com.google.gson.Gson;
 
@@ -124,6 +124,19 @@ public class PessoaBean {
 	
 	public List<Pessoa> getPessoas() {
 		return pessoas;
+	}
+	
+	@SuppressWarnings("static-access")
+	public String deslogar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		externalContext.getSessionMap().remove("usuarioLogado");
+		
+		HttpServletRequest httpServletRequest = (HttpServletRequest) context.getCurrentInstance().getExternalContext().getRequest();
+		httpServletRequest.getSession().invalidate();
+		
+		return "index.jsf";
 	}
 	
 	public String logar() {
