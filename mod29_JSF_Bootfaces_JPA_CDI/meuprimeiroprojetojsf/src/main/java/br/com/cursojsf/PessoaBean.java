@@ -171,5 +171,12 @@ public class PessoaBean {
 		estados = iDaoPessoa.listaEstados();
 		return estados;
 	}
+	
+	public void carregarCidades(AjaxBehaviorEvent event) {
+		String codigoEstado = (String) (event.getComponent().getAttributes().get("submittedValue"));
+		if (codigoEstado != null) {
+			System.out.println(codigoEstado);
+		}
+	}
 
 }
