@@ -12,9 +12,10 @@ import javax.persistence.EntityTransaction;
 import br.com.entidades.Cidades;
 import br.com.jpautil.JPAUtil;
 
-@SuppressWarnings("serial")
-@FacesConverter(forClass = Cidades.class)
+@FacesConverter(forClass = Cidades.class, value = "cidadeConverter")
 public class CidadesConverter implements Converter, Serializable {
+
+	private static final long serialVersionUID = 7942337638899772351L;
 
 	@Override // Para retornar o objeto inteiro
 	public Object getAsObject(FacesContext context, UIComponent component, String codigoCidade) {
@@ -31,7 +32,16 @@ public class CidadesConverter implements Converter, Serializable {
 	@Override // Para retornar apenas o código em String
 	public String getAsString(FacesContext context, UIComponent component, Object cidade) {
 		
-		return ((Cidades) cidade).getId().toString();
+		if (cidade == null) {
+			return null;
+		}
+		
+		if (cidade instanceof Cidades) {
+			return ((Cidades) cidade).getId().toString();
+		} else {
+			return cidade.toString();
+		}
+		
 	}
 
 }
