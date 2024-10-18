@@ -44,6 +44,11 @@ public class Estados implements Serializable{
 		this.sigla = sigla;
 	}
 	
+	@Override
+	public String toString() {
+		return getId().toString();
+	}
+	
 	
 
 }

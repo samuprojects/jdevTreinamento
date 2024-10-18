@@ -177,6 +177,7 @@ public class PessoaBean {
 		return estados;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void carregarCidades(AjaxBehaviorEvent event) {
 		String codigoEstado = (String) (event.getComponent().getAttributes().get("submittedValue"));
 		if (codigoEstado != null) {

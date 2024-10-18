@@ -66,7 +66,10 @@ public class Cidades implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getId().toString();
+	}
 	
 	
 
