@@ -16,7 +16,7 @@
 
 	<ui:include src="/menu.xhtml"></ui:include>
 
-	<h:form id="formPessoa" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
+	<h:form id="formPessoa" enctype="multipart/form-data" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 	
 		<h:messages infoStyle="color:green;background:#FAEBD7"/>
 		
@@ -27,6 +27,9 @@
 		
 		<h:outputLabel value="Id:"/>
 		<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/>
+		
+		<h:outputLabel value="Foto:"/>
+		<h:inputFile id="foto" value="#{pessoaBean.arquivofoto}"></h:inputFile>
 		
 		<h:outputLabel value="Nome:"/>
 		<h:inputText value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Informe o nome do usuário" pt:placeholder="Informe o nome do usuário" validatorMessage="Nome deve conter mínimo 4 letras">

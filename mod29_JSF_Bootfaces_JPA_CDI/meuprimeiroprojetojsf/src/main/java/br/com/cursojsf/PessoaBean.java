@@ -18,6 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 
@@ -42,6 +43,8 @@ public class PessoaBean {
 	private List<SelectItem> estados;
 	
 	private List<SelectItem> cidades;
+	
+	private Part arquivofoto;
 
 	public String salvar() {
 		pessoa = daoGeneric.merge(pessoa);
@@ -222,6 +225,14 @@ public class PessoaBean {
 	
 	public List<SelectItem> getCidades() {
 		return cidades;
+	}
+	
+	public void setArquivofoto(Part arquivofoto) {
+		this.arquivofoto = arquivofoto;
+	}
+	
+	public Part getArquivofoto() {
+		return arquivofoto;
 	}
 
 }
