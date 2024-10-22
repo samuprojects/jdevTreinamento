@@ -151,7 +151,7 @@
 			<h:commandButton style="margin-right:20px" value="Novo" id="botaoNovo" action="#{pessoaBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo" immediate="true">
 				<f:ajax execute="botaoNovo" render="@form"/>
 			</h:commandButton>
-			<h:commandButton style="margin-right:20px" value="Salvar" action="#{pessoaBean.salvar}" image="/resources/img/Save_37110.png" title="Salvar"/>
+			<h:commandButton style="margin-right:20px" value="Salvar" actionListener="#{pessoaBean.registraLog}" action="#{pessoaBean.salvar}" image="/resources/img/Save_37110.png" title="Salvar"/>
 			<h:commandButton style="margin-right:20px" value="Remover" action="#{pessoaBean.remove}" image="/resources/img/1486564399-close_81512.png" title="Excluir" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}" immediate="true"/>
 			<h:commandButton value="Limpar" id="botaoLimpar" action="#{pessoaBean.limpar}" image="/resources/img/Clear_37294.png" title="Limpar" immediate="true">
 				<f:ajax execute="botaoLimpar" render="@form"/>

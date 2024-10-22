@@ -90,6 +90,11 @@ public class PessoaBean {
 		return "";
 	}
 	
+	// apenas exemplo de como executar alguma rotina antes de determinado evento, pois não é recomendado gravar logs desse jeito.
+	public void registraLog() {
+		System.out.println("método registraLog");
+	}
+	
 	private void mostrarMsg(String msg) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage(msg);
@@ -129,6 +134,7 @@ public class PessoaBean {
 		this.pessoa = pessoa;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void pesquisaCep(AjaxBehaviorEvent event) {
 		
 		try {
