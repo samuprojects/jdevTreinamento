@@ -22,6 +22,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.br.TituloEleitoral;
+
 @Entity
 public class Pessoa implements Serializable {
 
@@ -32,7 +35,7 @@ public class Pessoa implements Serializable {
 	private Long id;
 
 	@NotEmpty
-	@Size(min=10, max=50, message = "Nome deve ter entre 4 e 50 letras")
+	@Size(min=4, max=50, message = "Nome deve ter entre 4 e 50 letras")
 	private String nome;
 
 	@NotEmpty(message = "Sobrenome deve ser informado")
@@ -62,8 +65,10 @@ public class Pessoa implements Serializable {
 	
 	private Integer[] linguagens;
 	
+	@CPF(message="CPF inválido")
 	private String cpf;
 	
+	@TituloEleitoral(message = "Título Eleitoral inválido")
 	private String titEleitoral;
 	
 	private String cep;
