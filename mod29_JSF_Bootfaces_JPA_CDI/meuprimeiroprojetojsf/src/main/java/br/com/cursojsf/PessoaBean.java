@@ -22,6 +22,7 @@ import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -134,7 +135,6 @@ public class PessoaBean {
 		this.pessoa = pessoa;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void pesquisaCep(AjaxBehaviorEvent event) {
 		
 		try {
@@ -217,6 +217,16 @@ public class PessoaBean {
 		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
 		
 		return pessoaUser.getPerfilUser().equals(acesso);
+	}
+	
+	public void mudancaDeValor(ValueChangeEvent evento){
+		System.out.println("Valor antigo: " + evento.getOldValue());
+		System.out.println("Valor Novo: " + evento.getNewValue());
+	}
+	
+	public void mudancaDeValorSobrenome(ValueChangeEvent evento) {
+		System.out.println("Valor antigo: " + evento.getOldValue());
+		System.out.println("Valor Novo: " + evento.getNewValue());
 	}
 	
 	public List<SelectItem> getEstados() {
