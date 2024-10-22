@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.hibernate.mapping.PrimaryKey;
+
 import br.com.jpautil.JPAUtil;
 
 public class DaoGeneric<E> {
@@ -69,5 +71,15 @@ public class DaoGeneric<E> {
 		entityManager.close();
 		
 		return retorno;
+	}
+	
+	public E consultar(Class<E> entidade, String codigo) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		E objeto = (E) entityManager.find(entidade, Long.parseLong(codigo));
+		
+		return objeto;
 	}
 }
