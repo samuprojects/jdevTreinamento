@@ -295,6 +295,7 @@ public class PessoaBean {
 		return buf;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void download() throws IOException {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getInitParameterMap();
 		String fileDownloadId = params.get("fileDownloadId");

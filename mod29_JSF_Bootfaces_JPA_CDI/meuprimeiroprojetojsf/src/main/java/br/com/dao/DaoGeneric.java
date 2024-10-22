@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import org.hibernate.mapping.PrimaryKey;
-
 import br.com.jpautil.JPAUtil;
 
 public class DaoGeneric<E> {
