@@ -8,6 +8,7 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import br.com.entidades.Estados;
@@ -26,7 +27,12 @@ public class IDaoPessoaImpl implements IDaoPessoa, Serializable {
 		
 		Pessoa pessoa = null;
 		
-		pessoa = (Pessoa) entityManager.createQuery("select p from Pessoa p where p.login = '" + login + "' and p.senha = '" + senha + "'").getSingleResult();
+		try {
+			
+			pessoa = (Pessoa) entityManager.createQuery("select p from Pessoa p where p.login = '" + login + "' and p.senha = '" + senha + "'").getSingleResult();
+			
+		} catch (NoResultException e) { // Tratamento para usuário com login/senha não localizado
+		}		
 		
 		return pessoa;
 	}
