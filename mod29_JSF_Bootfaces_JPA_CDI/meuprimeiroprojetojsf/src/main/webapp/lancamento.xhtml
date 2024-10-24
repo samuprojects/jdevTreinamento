@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui = "http://java.sun.com/jsf/facelets">
+    xmlns:ui = "http://java.sun.com/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 
@@ -15,25 +16,35 @@
 
 	<ui:include src="/menu.xhtml"></ui:include>
 
-	<h:form id="formLancamento">
+	<b:messages/>
+	<b:form id="formLancamento">
 	
-		<h:panelGrid columns="2">
+		<b:panelGrid columns="2">
 			<f:facet name="header">
 				<h:outputText value="Lançamentos"/>
 			</f:facet>
 			
+			<b:column>
 			<h:outputLabel value="ID:"/>
-			<h:inputText value="#{lancamentoBean.lancamento.id}" readonly="true"/>
+			<b:inputText value="#{lancamentoBean.lancamento.id}" readonly="true"/>
+			</b:column>
 			
+			<b:column>
 			<h:outputLabel value="Nota:"/>
-			<h:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}"/>
+			<b:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}" required="true" required-message="Informe o número da nota"/>
+			</b:column>
 			
-			<h:outputLabel value="Origem:"/>
-			<h:inputText value="#{lancamentoBean.lancamento.empresaOrigem}"/>
+			<b:column>
+			<h:outputLabel value="Origem:" required="true" required-message="Informe a origem" />
+			<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}"/>
+			</b:column>
 			
-			<h:outputLabel value="Destino:"/>
-			<h:inputText value="#{lancamentoBean.lancamento.empresaDestino}"/>
+			<b:column>
+			<h:outputLabel value="Destino:" required="true" required-message="Informe o destino"/>
+			<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}"/>
+			</b:column>
 		
+		<b:column>
 		<h:outputLabel/>
 		<h:panelGroup>
 			<h:commandButton style="margin-right:20px" value="Novo" action="#{lancamentoBean.novo}" image="/resources/img/new_add_user_16734.png" title="Novo"/>
@@ -41,9 +52,12 @@
 			<h:commandButton style="margin-right:20px" value="Remover" action="#{lancamentoBean.remover}" image="/resources/img/1486564399-close_81512.png" title="Excluir" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}"/>
 			<h:commandButton value="Limpar" type="reset" image="/resources/img/Clear_37294.png" title="Limpar"/>
 		</h:panelGroup>
-		</h:panelGrid>
+		</b:column>
 		
+		</b:panelGrid>
+		</b:form>
 		
+		<b:form>
 		<h:dataTable value="#{lancamentoBean.lancamentos}" var="lanc" border="3">
 			<f:facet name="header">Lista de Lançamentos</f:facet>
 			
@@ -91,7 +105,7 @@
 		
 		</h:dataTable>
 		
-	</h:form>
+	</b:form>
 
 </h:body>
 
