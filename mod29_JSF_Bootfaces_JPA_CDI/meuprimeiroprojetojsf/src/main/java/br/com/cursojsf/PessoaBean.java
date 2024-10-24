@@ -17,7 +17,6 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -39,6 +38,7 @@ import br.com.entidades.Estados;
 import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 import br.com.repository.IDaoPessoa;
+import net.bootsfaces.component.selectOneMenu.SelectOneMenu;
 
 @javax.faces.view.ViewScoped
 @Named(value = "pessoaBean")
@@ -66,32 +66,40 @@ public class PessoaBean implements Serializable {
 
 	public String salvar() throws IOException {
 		
-		byte[] imagemByte = getByte(arquivoFoto.getInputStream()); // processar imagem
-		pessoa.setFotoIconBase64Original(imagemByte); // salvar imagem original
-		
-		// transformar em buffer image
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
-		
-		// identificar tipo da imagem
-		int type = bufferedImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
-		
-		int largura = 200; // definindo tamanho da imagem miniatura
-		int altura = 200;
-		
-		// Criar miniatura
-		BufferedImage resizedImage = new BufferedImage(altura, altura, type);
-		Graphics2D g = resizedImage.createGraphics();
-		g.drawImage(bufferedImage, 0, 0, largura, altura, null);
-		g.dispose();
-		
-		// Escrever a imagem em tamanho menor
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		String extensao = arquivoFoto.getContentType().split("\\/")[1]; // vem no formato image/png por isso quebramos na barra e capturamos a extensão
-		ImageIO.write(resizedImage, extensao, baos);
-		
-		String miniImagem = "data:" + arquivoFoto.getContentType() + ";base64," + DatatypeConverter.printBase64Binary(baos.toByteArray());
-		pessoa.setFotoIconBase64(miniImagem);
-		pessoa.setExtensao(extensao);
+		if (arquivoFoto.getInputStream() != null) {
+			
+			byte[] imagemByte = getByte(arquivoFoto.getInputStream()); // processar imagem
+			
+			// transformar em buffer image
+			BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemByte));
+			
+			if (bufferedImage != null) {
+				
+				pessoa.setFotoIconBase64Original(imagemByte); // salvar imagem original
+				
+				// identificar tipo da imagem
+				int type = bufferedImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+				
+				int largura = 200; // definindo tamanho da imagem miniatura
+				int altura = 200;
+				
+				// Criar miniatura
+				BufferedImage resizedImage = new BufferedImage(altura, altura, type);
+				Graphics2D g = resizedImage.createGraphics();
+				g.drawImage(bufferedImage, 0, 0, largura, altura, null);
+				g.dispose();
+				
+				// Escrever a imagem em tamanho menor
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				String extensao = arquivoFoto.getContentType().split("\\/")[1]; // vem no formato image/png por isso quebramos na barra e capturamos a extensão
+				ImageIO.write(resizedImage, extensao, baos);
+				
+				String miniImagem = "data:" + arquivoFoto.getContentType() + ";base64," + DatatypeConverter.printBase64Binary(baos.toByteArray());
+				pessoa.setFotoIconBase64(miniImagem);
+				pessoa.setExtensao(extensao);
+				
+			}			
+		}		
 		
 		pessoa = daoGeneric.merge(pessoa);
 		carregarPessoas();
@@ -248,7 +256,7 @@ public class PessoaBean implements Serializable {
 	@SuppressWarnings("unchecked")
 	public void carregarCidades(AjaxBehaviorEvent event) {
 
-		Estados estado = (Estados) ((HtmlSelectOneMenu) event.getSource()).getValue();			
+		Estados estado = (Estados) ((SelectOneMenu) event.getSource()).getValue();			
 						
 			if (estado != null) {
 				pessoa.setEstados(estado);
