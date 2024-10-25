@@ -47,10 +47,16 @@ public class DaoGeneric<E> implements Serializable{
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<E> getListEntity(Class<E> entidade) {
 		
 		List<E> retorno = entityManager.createQuery("from " + entidade.getName()).getResultList();
+		
+		return retorno;
+	}
+	
+	public List<E> getListEntityLimit10(Class<E> entidade) {
+		
+		List<E> retorno = entityManager.createQuery("from " + entidade.getName() + " order by id desc ").setMaxResults(10).getResultList();
 		
 		return retorno;
 	}
