@@ -24,6 +24,8 @@
 				<h:outputText value="Lançamentos"/>
 			</f:facet>
 			
+			<b:panel>
+			
 			<b:column>
 			<h:outputLabel value="ID:"/>
 			<b:inputText value="#{lancamentoBean.lancamento.id}" readonly="true"/>
@@ -35,6 +37,14 @@
 			</b:column>
 			
 			<b:column>
+				<h:outputLabel value="Data Inicial:"/>
+				<b:datepicker locale="en" required="true" requiredMessage="Informe a Data Inicial" value="#{lancamentoBean.lancamento.dataInicial}"/>
+			</b:column>
+			</b:panel>
+			
+			
+			<b:panel>
+			<b:column>
 			<h:outputLabel value="Origem:" required="true" required-message="Informe a origem" />
 			<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}"/>
 			</b:column>
@@ -43,6 +53,14 @@
 			<h:outputLabel value="Destino:" required="true" required-message="Informe o destino"/>
 			<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}"/>
 			</b:column>
+			
+			<b:column>
+				<h:outputLabel value="Data Final:"/>
+				<b:datepicker locale="en" required="true" requiredMessage="Informe a Data Final" value="#{lancamentoBean.lancamento.dataFinal}"/>
+			</b:column>		
+		</b:panel>
+		
+		</b:panelGrid>
 		
 		<b:column>
 		<h:outputLabel/>
@@ -54,8 +72,11 @@
 		</h:panelGroup>
 		</b:column>
 		
-		</b:panelGrid>
 		</b:form>
+		
+		<br/>
+		<br/>
+		<br/>
 		
 		<b:form>
 		<h:dataTable value="#{lancamentoBean.lancamentos}" var="lanc" border="3">
