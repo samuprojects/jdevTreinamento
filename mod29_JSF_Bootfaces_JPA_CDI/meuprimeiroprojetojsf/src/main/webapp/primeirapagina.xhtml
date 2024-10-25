@@ -82,9 +82,9 @@
 		
 		<b:column>
 			<h:outputLabel value="Nascimento:"/>
-			<b:inputText value="#{pessoaBean.pessoa.dataNascimento}" pt:placeholder="Informe data nascimento válida" converterMessage="Formato de data digitado é inválido!">
-				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Sao_Paulo"/> <!-- GMT-03:00 não funcionou como na aula -->
-			</b:inputText>
+			
+			<b:datepicker format="DD/MM/YYYY" locale="br" placeholder="Data de Nascimento" value="#{pessoaBean.pessoa.dataNascimento}"></b:datepicker>
+			
 		</b:column>
 		
 		<b:column>
@@ -104,13 +104,15 @@
 			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
 		</b:column>
 		
+
+		</b:panel>
+		
+		<b:panel>		
+		
 		<b:column>
 			<h:outputLabel value="Login:"/>
 			<b:inputText value="#{pessoaBean.pessoa.login}"/>
 		</b:column>
-		</b:panel>
-		
-		<b:panel>		
 		<b:column>
 			<h:outputLabel value="Senha:"/>
 			<b:inputSecret value="#{pessoaBean.pessoa.senha}"/>
