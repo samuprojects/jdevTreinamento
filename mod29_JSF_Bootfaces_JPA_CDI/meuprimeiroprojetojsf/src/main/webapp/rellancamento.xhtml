@@ -20,10 +20,24 @@
 	
 		<b:panelGrid columns="2">
 			
+			<b:column>
+				<h:outputLabel value="Data Inicial:"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="br" placeholder="Data Inicial" value="#{relLancamento.dataInicial}"/>
+			</b:column>
+			
+			<b:column>
+				<h:outputLabel value="Data Final:"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="br" placeholder="Data Final" value="#{relLancamento.dataFinal}"/>
+			</b:column>
+			
+			<b:column>
+				<h:outputLabel value="Número da Nota:"/>
+				<b:inputText value="#{relLancamento.numeroDaNota}"/>
+			</b:column>
 		
 		</b:panelGrid>
 		
-			<b:commandButton value="Buscar" action="#{relLancamento.buscarLancamento}" />
+			<b:commandButton value="Buscar" action="#{relLancamento.buscarLancamento}" look="primary" style="margin-left: 15px;"/>
 		
 		</b:form>
 		

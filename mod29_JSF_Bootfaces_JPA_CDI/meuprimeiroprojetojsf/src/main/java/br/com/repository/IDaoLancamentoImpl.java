@@ -1,6 +1,7 @@
 package br.com.repository;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,6 +34,14 @@ public class IDaoLancamentoImpl implements IDaoLancamento, Serializable {
 		lista = entityManager.createQuery(" from Lancamento where usuario.id = " + codUser).getResultList();
 		
 		return lista;
+	}
+
+	@Override
+	public List<Lancamento> relatorioLancamento(String numNome, Date dataInicial, Date dataFinal) {
+		
+		System.out.println(numNome + " -- " + dataInicial + " -- " + dataFinal);
+		
+		return null;
 	}
 
 }

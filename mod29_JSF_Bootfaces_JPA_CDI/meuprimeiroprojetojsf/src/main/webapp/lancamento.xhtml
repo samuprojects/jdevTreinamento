@@ -38,7 +38,7 @@
 			
 			<b:column>
 				<h:outputLabel value="Data Inicial:"/>
-				<b:datepicker locale="en" required="true" requiredMessage="Informe a Data Inicial" value="#{lancamentoBean.lancamento.dataInicial}"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="br" placeholder="Data de Nascimento" required="true" requiredMessage="Informe a Data Inicial" value="#{lancamentoBean.lancamento.dataInicial}"/>
 			</b:column>
 			</b:panel>
 			
@@ -56,7 +56,7 @@
 			
 			<b:column>
 				<h:outputLabel value="Data Final:"/>
-				<b:datepicker locale="en" required="true" requiredMessage="Informe a Data Final" value="#{lancamentoBean.lancamento.dataFinal}"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="br" required="true" requiredMessage="Informe a Data Final" value="#{lancamentoBean.lancamento.dataFinal}"/>
 			</b:column>		
 		</b:panel>
 		

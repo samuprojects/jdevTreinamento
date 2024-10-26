@@ -2,6 +2,7 @@ package br.com.cursojsf;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
@@ -18,6 +19,12 @@ public class RelLancamento implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private Date dataInicial;
+	
+	private Date dataFinal;
+	
+	private String numeroDaNota;
+	
 	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 	
 	@Inject
@@ -26,6 +33,30 @@ public class RelLancamento implements Serializable {
 	@Inject
 	private DaoGeneric<Lancamento> daoGeneric;
 	
+	public Date getDataInicial() {
+		return dataInicial;
+	}
+
+	public void setDataInicial(Date dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+	public String getNumeroDaNota() {
+		return numeroDaNota;
+	}
+
+	public void setNumeroDaNota(String numeroDaNota) {
+		this.numeroDaNota = numeroDaNota;
+	}
+
 	public void setLancamentos(List<Lancamento> lancamentos) {
 		this.lancamentos = lancamentos;
 	}
@@ -35,7 +66,13 @@ public class RelLancamento implements Serializable {
 	}
 	
 	public void buscarLancamento() {
-		lancamentos = daoGeneric.getListEntity(Lancamento.class);
+		
+		if (dataInicial == null && dataFinal == null && numeroDaNota == null) {
+			lancamentos = daoGeneric.getListEntity(Lancamento.class);
+		} else {
+			lancamentos = daoLancamento.relatorioLancamento(numeroDaNota, dataInicial, dataFinal);
+		}
+		
 	}
 
 }
