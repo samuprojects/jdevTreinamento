@@ -33,12 +33,12 @@
 			
 			<b:column>
 			<h:outputLabel value="Nota:"/>
-			<b:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}" required="true" required-message="Informe o número da nota"/>
+			<b:inputText value="#{lancamentoBean.lancamento.numeroNotaFiscal}" placeholder="Número da Nota" required="true" required-message="Informe o número da nota"/>
 			</b:column>
 			
 			<b:column>
 				<h:outputLabel value="Data Inicial:"/>
-				<b:dateTimePicker format="DD/MM/YYYY" locale="br" placeholder="Data de Nascimento" required="true" requiredMessage="Informe a Data Inicial" value="#{lancamentoBean.lancamento.dataInicial}"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Inicial" required="true" requiredMessage="Informe a Data Inicial" value="#{lancamentoBean.lancamento.dataInicial}"/>
 			</b:column>
 			</b:panel>
 			
@@ -46,17 +46,17 @@
 			<b:panel>
 			<b:column>
 			<h:outputLabel value="Origem:" required="true" required-message="Informe a origem" />
-			<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}"/>
+			<b:inputText value="#{lancamentoBean.lancamento.empresaOrigem}" placeholder="Empresa de Origem"/>
 			</b:column>
 			
 			<b:column>
 			<h:outputLabel value="Destino:" required="true" required-message="Informe o destino"/>
-			<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}"/>
+			<b:inputText value="#{lancamentoBean.lancamento.empresaDestino}" placeholder="Empresa de Destino"/>
 			</b:column>
 			
 			<b:column>
 				<h:outputLabel value="Data Final:"/>
-				<b:dateTimePicker format="DD/MM/YYYY" locale="br" required="true" requiredMessage="Informe a Data Final" value="#{lancamentoBean.lancamento.dataFinal}"/>
+				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Inicial" required="true" requiredMessage="Informe a Data Final" value="#{lancamentoBean.lancamento.dataFinal}"/>
 			</b:column>		
 		</b:panel>
 		

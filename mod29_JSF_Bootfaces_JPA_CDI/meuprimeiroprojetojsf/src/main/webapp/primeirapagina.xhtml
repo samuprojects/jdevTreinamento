@@ -83,7 +83,7 @@
 		<b:column>
 			<h:outputLabel value="Nascimento:"/>
 			
-			<b:dateTimePicker format="DD/MM/YYYY" locale="br" placeholder="Data de Nascimento" value="#{pessoaBean.pessoa.dataNascimento}"></b:dateTimePicker>
+			<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data de Nascimento" value="#{pessoaBean.pessoa.dataNascimento}"></b:dateTimePicker>
 			
 		</b:column>
 		
@@ -111,11 +111,11 @@
 		
 		<b:column>
 			<h:outputLabel value="Login:"/>
-			<b:inputText value="#{pessoaBean.pessoa.login}"/>
+			<b:inputText value="#{pessoaBean.pessoa.login}" placeholder="Informe o login"/>
 		</b:column>
 		<b:column>
 			<h:outputLabel value="Senha:"/>
-			<b:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			<b:inputSecret value="#{pessoaBean.pessoa.senha}" placeholder="Informe a senha"/>
 		</b:column>
 		
 		<b:column>
@@ -172,7 +172,7 @@
 		
 		<b:column>
 			<h:outputLabel value="CEP:" pt:placeholder="Informe um CEP válido"/>
-			<b:inputText value="#{pessoaBean.pessoa.cep}">
+			<b:inputText value="#{pessoaBean.pessoa.cep}" placeholder="Informe um CEP válido">
 				<f:ajax event="blur" execute="@form" listener="#{pessoaBean.pesquisaCep}" render="@form"/>
 			</b:inputText>
 		</b:column>
@@ -180,8 +180,8 @@
 		
 		<b:panel>		
 		<b:column>
-			<h:outputLabel value="Logradouro:"/>
-			<b:inputText value="#{pessoaBean.pessoa.logradouro}" id="logradouro"/>
+			<h:outputLabel value="Logradouro:" />
+			<b:inputText value="#{pessoaBean.pessoa.logradouro}" id="logradouro" placeholder="Informe um CEP válido para carregar o Logradouro"/>
 		</b:column>
 		
 		<b:column>
@@ -191,19 +191,19 @@
 		
 		<b:column>
 			<h:outputLabel value="Bairro:"/>
-			<b:inputText value="#{pessoaBean.pessoa.bairro}" id="bairro"/>
+			<b:inputText value="#{pessoaBean.pessoa.bairro}" id="bairro" placeholder="Informe um CEP válido para carregar o Bairro"/>
 		</b:column>
 		
 		<b:column>
 	    <h:outputLabel value="Localidade"/>
-	    <b:inputText value="#{pessoaBean.pessoa.localidade}" id="localidade"/>
+	    <b:inputText value="#{pessoaBean.pessoa.localidade}" id="localidade" placeholder="Informe um CEP válido para carregar a Localidade"/>
 	    </b:column>
 	    </b:panel>	 
 	    
 	    <b:panel>
 		<b:column>
 			<h:outputLabel value="UF:"/>
-			<b:inputText value="#{pessoaBean.pessoa.uf}" id="uf"/>
+			<b:inputText value="#{pessoaBean.pessoa.uf}" id="uf" placeholder="Informe um CEP válido para carregar a UF"/>
 		</b:column>
 		
 		<b:column>
@@ -213,7 +213,7 @@
 		
 		<b:column>
 			<h:outputLabel value="Ibge:"/>
-			<b:inputText value="#{pessoaBean.pessoa.ibge}" id="ibge"/>
+			<b:inputText value="#{pessoaBean.pessoa.ibge}" id="ibge" placeholder="Informe um CEP válido para carregar o cód. IBGE"/>
 		</b:column>
 		
 		<b:column>

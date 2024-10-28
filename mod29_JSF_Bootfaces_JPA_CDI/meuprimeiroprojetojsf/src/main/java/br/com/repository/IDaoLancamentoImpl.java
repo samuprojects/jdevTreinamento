@@ -1,6 +1,7 @@
-package br.com.repository;
+ package br.com.repository;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +50,31 @@ public class IDaoLancamentoImpl implements IDaoLancamento, Serializable {
 		
 		if (dataInicial == null && dataFinal == null && numeroNota != null && !numeroNota.isEmpty()) {
 			sql.append(" where l.numeroNotaFiscal = '").append(numeroNota.trim()).append("'");
+		} else if (numeroNota == null || (numeroNota != null && numeroNota.isEmpty()) && dataInicial != null && dataFinal == null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			sql.append(" where l.dataInicial >= '").append(dataInicialString).append("'");
+			
+		} else if (numeroNota == null || (numeroNota != null && numeroNota.isEmpty()) && dataInicial == null && dataFinal != null) {
+			
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			sql.append(" where l.dataFinal <= '").append(dataFinalString).append("'");
+		} else if (numeroNota == null || (numeroNota != null && numeroNota.isEmpty()) && dataInicial != null & dataFinal != null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			
+			sql.append(" where l.dataInicial >= '").append(dataInicialString).append("'");
+			sql.append(" and l.dataFinal <= '").append(dataFinalString).append("'");
+			
+		} else if (numeroNota != null && !numeroNota.isEmpty() && dataInicial != null & dataFinal != null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			
+			sql.append(" where l.dataInicial >= '").append(dataInicialString).append("'");
+			sql.append(" and l.dataFinal <= '").append(dataFinalString).append("'");
+			sql.append(" and l.numeroNotaFiscal = '").append(numeroNota.trim()).append("'");
 		}
 		
 		lancamentos = entityManager.createQuery(sql.toString()).getResultList();
