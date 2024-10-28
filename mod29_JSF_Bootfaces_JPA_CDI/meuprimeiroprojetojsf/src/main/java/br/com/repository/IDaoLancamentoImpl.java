@@ -1,12 +1,14 @@
 package br.com.repository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import br.com.entidades.Lancamento;
 
@@ -37,11 +39,21 @@ public class IDaoLancamentoImpl implements IDaoLancamento, Serializable {
 	}
 
 	@Override
-	public List<Lancamento> relatorioLancamento(String numNome, Date dataInicial, Date dataFinal) {
+	public List<Lancamento> relatorioLancamento(String numeroNota, Date dataInicial, Date dataFinal) {
 		
-		System.out.println(numNome + " -- " + dataInicial + " -- " + dataFinal);
+		List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 		
-		return null;
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select l from Lancamento l");
+		
+		if (dataInicial == null && dataFinal == null && numeroNota != null && !numeroNota.isEmpty()) {
+			sql.append(" where l.numeroNotaFiscal = '").append(numeroNota.trim()).append("'");
+		}
+		
+		lancamentos = entityManager.createQuery(sql.toString()).getResultList();
+		
+		return lancamentos;
 	}
 
 }
