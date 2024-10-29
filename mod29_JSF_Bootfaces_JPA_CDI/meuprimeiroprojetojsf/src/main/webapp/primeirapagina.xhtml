@@ -10,6 +10,8 @@
 <h:head>
 
 	<title>Cadastro de Usuário</title>
+	
+	<link href="resources/estilo.css" rel="stylesheet"></link>
 
 </h:head>
 
@@ -268,7 +270,7 @@
 			<h:column>
 				<f:facet name="header">Foto</f:facet>
 				<h:commandLink actionListener="#{pessoaBean.download}">
-					<h:graphicImage width="60" height="60" value="#{pessoa.fotoIconBase64}"/>
+					<h:graphicImage width="30" height="30" value="#{pessoa.fotoIconBase64}"/>
 						<f:param name="fileDownloadId" value="#{pessoa.id}"/>
 				</h:commandLink>
 				
