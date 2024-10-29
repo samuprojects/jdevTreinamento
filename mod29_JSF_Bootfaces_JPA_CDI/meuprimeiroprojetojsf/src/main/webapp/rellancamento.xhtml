@@ -23,17 +23,17 @@
 		<b:panelGrid columns="2">
 			
 			<b:column>
-				<h:outputLabel value="Data Inicial:"/>
+				<h:outputLabel value="Data Inicial:" />
 				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Inicial" value="#{relLancamento.dataInicial}"/>
 			</b:column>
 			
 			<b:column>
-				<h:outputLabel value="Data Final:"/>
+				<h:outputLabel value="Data Final:" />
 				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Final" value="#{relLancamento.dataFinal}"/>
 			</b:column>
 			
 			<b:column>
-				<h:outputLabel value="Número da Nota:"/>
+				<h:outputLabel value="Número da Nota:" />
 				<b:inputText value="#{relLancamento.numeroDaNota}"/>
 			</b:column>
 		
@@ -48,11 +48,11 @@
 		<br/>
 		
 		<b:form>
-		<b:dataTable value="#{relLancamento.lancamentos}" var="lanc" border="3" cellpadding="6" pdf="true" excel="true">
+		<b:dataTable value="#{relLancamento.lancamentos}" var="lanc" border="3" cellpadding="6" pdf="true" excel="true" style="font-size: 12px;">
 
-			<b:dataTableColumn value="#{lanc.id}" label="ID"/>
+			<b:dataTableColumn value="#{lanc.id}" label="ID" />
 			
-			<b:dataTableColumn value="#{lanc.numeroNotaFiscal}" label="Nota"/>
+			<b:dataTableColumn value="#{lanc.numeroNotaFiscal}" label="Nota" />
 			
 			<b:dataTableColumn value="#{lanc.usuario.nome}" label="User"/>
 			

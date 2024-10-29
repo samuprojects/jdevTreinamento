@@ -56,17 +56,17 @@
 		<b:panel>		
 		<b:column>
 			<h:outputLabel value="Idade:"/>
-			<b:inputText value="#{pessoaBean.pessoa.idade}" pt:placeholder="Informe a idade do usuário"/>
+			<b:inputText value="#{pessoaBean.pessoa.idade}" mask="numeric" pt:placeholder="Informe a idade do usuário"/>
 		</b:column>
 		
 		<b:column>
 			<h:outputLabel value="Cpf:"/>
-			<b:inputText value="#{pessoaBean.pessoa.cpf}" pt:placeholder="Informe um CPF válido"/>
+			<b:inputText value="#{pessoaBean.pessoa.cpf}" mask="999.999.999-99" pt:placeholder="Informe um CPF válido"/>
 		</b:column>
 		
 		<b:column>
 			<h:outputLabel value="Título Eleitor:"/>
-			<b:inputText value="#{pessoaBean.pessoa.titEleitoral}" pt:placeholder="Informe um título Eleitoral válido"/>
+			<b:inputText value="#{pessoaBean.pessoa.titEleitoral}" mask="numeric" pt:placeholder="Informe um título Eleitoral válido"/>
 		</b:column>
 		
 		<b:column>
@@ -85,7 +85,7 @@
 		<b:column>
 			<h:outputLabel value="Nascimento:"/>
 			
-			<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data de Nascimento" value="#{pessoaBean.pessoa.dataNascimento}"></b:dateTimePicker>
+			<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" mask="99/99/9999" placeholder="Data de Nascimento" value="#{pessoaBean.pessoa.dataNascimento}"></b:dateTimePicker>
 			
 		</b:column>
 		
@@ -174,7 +174,7 @@
 		
 		<b:column>
 			<h:outputLabel value="CEP:" pt:placeholder="Informe um CEP válido"/>
-			<b:inputText value="#{pessoaBean.pessoa.cep}" placeholder="Informe um CEP válido">
+			<b:inputText value="#{pessoaBean.pessoa.cep}" mask="99999-999" placeholder="Informe um CEP válido">
 				<f:ajax event="blur" execute="@form" listener="#{pessoaBean.pesquisaCep}" render="@form"/>
 			</b:inputText>
 		</b:column>

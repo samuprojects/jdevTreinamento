@@ -33,6 +33,7 @@ body {
     line-height: 1.428571429;
     color: #333333;
     background-color: #fff;
+    margin: 10px;
 }
 
 .form-group {
@@ -52,6 +53,14 @@ label {
     vertical-align: top;
     border-top: 1px solid #b9b9b9;
 }
+
+.panel-group {
+    margin: 5px;    
+}
+
+
+
+
 
 
 
