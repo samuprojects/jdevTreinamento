@@ -1,7 +1,9 @@
 package br.com.repository;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -12,6 +14,7 @@ import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import br.com.entidades.Estados;
+import br.com.entidades.Lancamento;
 import br.com.entidades.Pessoa;
 
 @Named
@@ -49,6 +52,49 @@ public class IDaoPessoaImpl implements IDaoPessoa, Serializable {
 	    }
 	    
 	    return selectItems;
+	}
+
+	@Override
+	public List<Pessoa> relatorioPessoa(String nome, Date dataInicial, Date dataFinal) {
+		List<Pessoa> lancamentos = new ArrayList<Pessoa>();
+		
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append(" select l from Pessoa l");
+		
+		if (dataInicial == null && dataFinal == null && nome != null && !nome.isEmpty()) {
+			sql.append(" where upper (l.nome) like '%").append(nome.trim().toUpperCase()).append("%'");
+		} else if (nome == null || (nome != null && nome.isEmpty()) && dataInicial != null && dataFinal == null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			sql.append(" where l.dataNascimento >= '").append(dataInicialString).append("'");
+			
+		} else if (nome == null || (nome != null && nome.isEmpty()) && dataInicial == null && dataFinal != null) {
+			
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			sql.append(" where l.dataNascimento <= '").append(dataFinalString).append("'");
+			
+		} else if (nome == null || (nome != null && nome.isEmpty()) && dataInicial != null & dataFinal != null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			
+			sql.append(" where l.dataNascimento >= '").append(dataInicialString).append("'");
+			sql.append(" and l.dataNascimento <= '").append(dataFinalString).append("'");
+			
+		} else if (nome != null && !nome.isEmpty() && dataInicial != null & dataFinal != null) {
+			
+			String dataInicialString = new SimpleDateFormat("yyyy-MM-dd").format(dataInicial);
+			String dataFinalString = new SimpleDateFormat("yyyy-MM-dd").format(dataFinal);
+			
+			sql.append(" where l.dataNascimento >= '").append(dataInicialString).append("'");
+			sql.append(" and l.dataNascimento <= '").append(dataFinalString).append("'");
+			sql.append(" and upper (l.nome) like '%").append(nome.trim().toUpperCase()).append("%'");
+		}
+		
+		lancamentos = entityManager.createQuery(sql.toString()).getResultList();
+		
+		return lancamentos;
 	}
 
 }

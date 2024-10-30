@@ -1,0 +1,63 @@
+<!DOCTYPE html5>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+	<title>Usuário</title>
+	
+	<link href="resources/estilo.css" rel="stylesheet"></link>
+
+</h:head>
+
+<h:body>
+
+	<ui:include src="/menu.xhtml"></ui:include>
+
+	<b:messages id="msg"/>
+	<b:form id="formPessoas">
+	
+		<b:panelGrid columns="2">
+			
+			<b:column>
+				<h:outputLabel value="Data Inicial:" />
+				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Inicial" value="#{relUsuario.dataInicial}"/>
+			</b:column>
+			
+			<b:column>
+				<h:outputLabel value="Data Final:" />
+				<b:dateTimePicker format="DD/MM/YYYY" locale="pt_BR" placeholder="Data Final" value="#{relUsuario.dataFinal}"/>
+			</b:column>
+			
+			<b:column>
+				<h:outputLabel value="Nome:" />
+				<b:inputText value="#{relUsuario.nome}"/>
+			</b:column>
+		
+		</b:panelGrid>
+		
+			<b:commandButton value="Buscar" action="#{relUsuario.relPessoa}" look="primary" style="margin-left: 15px;"/>
+		
+		</b:form>
+		
+		<br/>
+		<br/>
+		<br/>
+		
+		<b:form>
+		<b:dataTable value="#{relUsuario.pessoas}" var="p" border="3" cellpadding="6" pdf="true" excel="true" style="font-size: 12px;">
+
+			<b:dataTableColumn value="#{p.id}" label="ID" />
+			
+			<b:dataTableColumn value="#{p.nome}" label="Nome" />
+	
+		</b:dataTable>
+		
+	</b:form>
+
+</h:body>
+
+</html>
