@@ -26,6 +26,11 @@ public class HibernateUtil {
 
 		}
 	}
+	
+	public static EntityManagerFactory getFactory() {
+		return factory;
+	}
+
 
 	public static EntityManager getEntityManager() {
 		return factory.createEntityManager(); // Prover a persistência
