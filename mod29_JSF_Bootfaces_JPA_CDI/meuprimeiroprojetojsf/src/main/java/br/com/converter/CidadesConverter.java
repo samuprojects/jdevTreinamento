@@ -19,23 +19,37 @@ public class CidadesConverter implements Converter, Serializable {
 	@Override // Para retornar o objeto inteiro
 	public Object getAsObject(FacesContext context, UIComponent component, String codigoCidade) {
 		
-		EntityManager entityManager = CDI.current().select(EntityManager.class).get();
+		if (codigoCidade != null && !codigoCidade.isEmpty()) {
+			
+			EntityManager entityManager = CDI.current().select(EntityManager.class).get();
+			
+			Cidades cidade = (Cidades) entityManager.find(Cidades.class, Long.parseLong(codigoCidade));
+			
+			System.out.println("cidade converter " + cidade);
+			
+			return cidade;
+		} else {
+			
+			System.out.println("cidade converter vazio 1 ");
+			return "";
+
+		}		
 		
-		Cidades cidade = (Cidades) entityManager.find(Cidades.class, Long.parseLong(codigoCidade));
-		
-		return cidade;
 	}
 
 	@Override // Para retornar apenas o código em String
 	public String getAsString(FacesContext context, UIComponent component, Object cidade) {
 		
-		if (cidade == null) {
-			return null;
+		if (cidade == null  || (cidade.toString() != null && cidade.toString().isEmpty())) {
+			System.out.println("cidade converter vazio 2 ");
+			return "";
 		}
 		
 		if (cidade instanceof Cidades) {
+			System.out.println("cidade converter 3 " + ((Cidades) cidade).getId().toString());
 			return ((Cidades) cidade).getId().toString();
 		} else {
+			System.out.println("cidade converter to string " + cidade.toString());
 			return cidade.toString();
 		}
 		

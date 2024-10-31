@@ -1,6 +1,7 @@
 package br.com.filter;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.inject.Inject;
 import javax.servlet.Filter;
@@ -18,7 +19,9 @@ import br.com.entidades.Pessoa;
 import br.com.jpautil.JPAUtil;
 
 @WebFilter(urlPatterns = {"/*"})
-public class FilterAutenticacao implements Filter{
+public class FilterAutenticacao implements Filter, Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private JPAUtil jpaUtil;

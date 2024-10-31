@@ -19,23 +19,39 @@ public class EstadoConverter implements Converter, Serializable {
 	@Override // Para retornar o objeto inteiro
 	public Object getAsObject(FacesContext context, UIComponent component, String codigoEstado) {
 		
-		EntityManager entityManager = CDI.current().select(EntityManager.class).get();
-		
-		Estados estados = (Estados) entityManager.find(Estados.class, Long.parseLong(codigoEstado));
-		
-		return estados;
-	}
+		try {
+			if (codigoEstado != null && !codigoEstado.isEmpty()) {
+				
+				EntityManager entityManager = CDI.current().select(EntityManager.class).get();
+				
+				Estados estados = (Estados) entityManager.find(Estados.class, Long.parseLong(codigoEstado));
+				
+				System.out.println("tentativa de carregar estado " + estados + " codigoEstado " + codigoEstado);
+				
+				return estados;
+			} else {
+				System.out.println("estado vazio");
+				return "";
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return null;
+		}		
+	} 
 
 	@Override // Para retornar apenas o código em String
 	public String getAsString(FacesContext context, UIComponent component, Object estado) {
 		
 		if (estado == null) {
+			System.out.println("estado null");
 			return null;
 		}
 		
 		if (estado instanceof Estados) {
+			System.out.println("--- 555" + ((Estados) estado).getId().toString());
 			return ((Estados) estado).getId().toString();
 		} else {
+			System.out.println("--- dd" +estado.toString());
 			return estado.toString();
 		}
 		

@@ -66,7 +66,7 @@ public class PessoaBean implements Serializable {
 
 	public String salvar() throws IOException {
 		
-		if (arquivoFoto.getInputStream() != null) {
+		if (arquivoFoto != null && arquivoFoto.getInputStream() != null) {
 			
 			byte[] imagemByte = getByte(arquivoFoto.getInputStream()); // processar imagem
 			
@@ -219,7 +219,15 @@ public class PessoaBean implements Serializable {
 			// adicionar usuário na sessão usuarioLogado
 			FacesContext context = FacesContext.getCurrentInstance();
 			ExternalContext externalContext = context.getExternalContext();
-			externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
+			externalContext.getSessionMap().put("usuarioLogado", pessoaUser); // versão aula
+			
+			/* outra versão da implementação do professor no cod.fonte
+			 * HttpServletRequest req = (HttpServletRequest) externalContext.getRequest();
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("usuarioLogado", pessoaUser);
+
+			 * */
 			
 			return "primeirapagina.jsf";
 		} else {
@@ -300,6 +308,10 @@ public class PessoaBean implements Serializable {
 		return cidades;
 	}
 	
+	public void listenerCombo(ValueChangeEvent changeEvent) {
+		System.out.println(changeEvent);
+	}
+	
 	public void setArquivoFoto(Part arquivoFoto) {
 		this.arquivoFoto = arquivoFoto;
 	}
@@ -331,9 +343,8 @@ public class PessoaBean implements Serializable {
 		return buf;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void download() throws IOException {
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getInitParameterMap();
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String fileDownloadId = params.get("fileDownloadId");
 		
 		Pessoa pessoa = daoGeneric.consultar(Pessoa.class, fileDownloadId);
@@ -344,7 +355,7 @@ public class PessoaBean implements Serializable {
 		response.setContentLength(pessoa.getFotoIconBase64Original().length);
 		response.getOutputStream().write(pessoa.getFotoIconBase64Original());
 		response.getOutputStream().flush();
-		FacesContext.getCurrentInstance().getResponseComplete();
+		FacesContext.getCurrentInstance().responseComplete();
 		
 	}
 

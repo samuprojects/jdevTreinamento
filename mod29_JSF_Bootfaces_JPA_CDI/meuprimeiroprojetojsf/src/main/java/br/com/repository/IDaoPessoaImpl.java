@@ -14,7 +14,6 @@ import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import br.com.entidades.Estados;
-import br.com.entidades.Lancamento;
 import br.com.entidades.Pessoa;
 
 @Named
@@ -40,7 +39,7 @@ public class IDaoPessoaImpl implements IDaoPessoa, Serializable {
 		return pessoa;
 	}
 	
-	@Transactional
+	@Override
 	public List<SelectItem> listaEstados() {
 	    
 	    List<SelectItem> selectItems = new ArrayList<SelectItem>();

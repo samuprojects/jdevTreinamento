@@ -62,6 +62,7 @@ public class LancamentoBean implements Serializable {
 	}
 	
 	public String remover() {
+		System.out.println("remover foi chamado");
 		daoGeneric.deletePorId(lancamento);
 		lancamento = new Lancamento();
 		carregarLancamentos();
