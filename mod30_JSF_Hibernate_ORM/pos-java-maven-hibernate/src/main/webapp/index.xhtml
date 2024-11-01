@@ -42,6 +42,32 @@
 	  	
 	  	<h:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
 	  	
+	  	<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user">
+	  		<h:column>
+	  			<h:outputText value="#{user.id}"/>
+	  		</h:column>
+	  		
+	  		<h:column>
+	  			<h:outputText value="#{user.nome}"/>
+	  		</h:column>
+	  		
+	  		<h:column>
+	  			<h:outputText value="#{user.sobrenome}"/>
+	  		</h:column>
+	  		
+	  		<h:column>
+	  			<h:outputText value="#{user.email}"/>
+	  		</h:column>
+	  		
+	  		<h:column>
+	  			<h:outputText value="#{user.idade}"/>
+	  		</h:column>
+	  		
+	  		<h:column>
+	  			<h:outputText value="#{user.login}"/>
+	  		</h:column>
+	  		
+	  	</h:dataTable>
 	  	
 	  </h:form>
 	  
