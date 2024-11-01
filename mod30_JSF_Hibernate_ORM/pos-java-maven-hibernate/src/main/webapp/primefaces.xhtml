@@ -16,35 +16,35 @@
 	  
 	  <h:form>
 	   <h:messages showDetail="true" showSummary="false"/>
-	  	<h:panelGrid columns="2">
+	  	<p:panelGrid columns="2">
 		  	<h:outputLabel>Id:</h:outputLabel>
-		  	<h:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
+		  	<p:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
 		  	
 		  	<h:outputLabel>Nome:</h:outputLabel>
-		  	<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome!"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome!"/>
 		  	
 		  	<h:outputLabel>Sobrenome:</h:outputLabel>
-		  	<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome!"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome!"/>
 		  	
 		  	<h:outputLabel>Email:</h:outputLabel>
-		  	<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
 		  	
 		  	<h:outputLabel>Idade:</h:outputLabel>
-		  	<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
 		  	
 		  	<h:outputLabel>Login:</h:outputLabel>
-		  	<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login!"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login!"/>
 		  	
 		  	<h:outputLabel>Senha:</h:outputLabel>
-		  	<h:inputSecret value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a senha!"/>
+		  	<p:password value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a senha!"/>
 	  	
-	  	</h:panelGrid>
+	  	</p:panelGrid>
 	  	
-	  	<h:commandButton value="Salvar" action="#{usuarioPessoaManagedBean.salvar}"/>
+	  	<p:commandButton value="Salvar" action="#{usuarioPessoaManagedBean.salvar}"/>
 	  	
-	  	<h:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
+	  	<p:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
 	  	
-	  	<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" cellpadding="15" border="1">
+	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" cellpadding="15" border="1">
 	  		<f:facet name="header">Lista de Usuários</f:facet>
 	  		
 	  		<h:column style="width:150px;">
@@ -93,7 +93,7 @@
 	  		
 
 	  		
-	  	</h:dataTable>
+	  	</p:dataTable>
 	  	
 	  </h:form>
 	  
