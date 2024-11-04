@@ -93,14 +93,17 @@
 	  		
 	  		<h:column>
 	  		<f:facet name="header">Editar</f:facet>
-	  			<h:commandLink value="Editar">
+	  			<h:commandLink immediate="true" id="botaoeditar">
+	  			<h:graphicImage url="resources/img/editar.png"/>
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+	  				<f:ajax execute="botaoeditar" render="@form"/>
 	  			</h:commandLink>
 	  		</h:column>
 	  		
 	  		<h:column>
 	  		<f:facet name="header">Excluir</f:facet>
-	  			<h:commandLink value="Excluir" action="#{usuarioPessoaManagedBean.remover}">
+	  			<h:commandLink  immediate="true" action="#{usuarioPessoaManagedBean.remover}">
+	  				<h:graphicImage url="resources/img/delete.png"/>
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
 	  			</h:commandLink>
 	  		</h:column>
