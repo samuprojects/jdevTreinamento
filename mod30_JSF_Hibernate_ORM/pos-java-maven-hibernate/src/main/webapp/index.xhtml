@@ -98,7 +98,7 @@
 	  			<h:commandLink immediate="true" id="botaoeditar">
 	  			<h:graphicImage url="resources/img/editar.png"/>
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
-	  				<f:ajax execute="botaoeditar" render="@form"/>
+	  				<f:ajax execute="botaoeditar" render=":formulario"/>
 	  			</h:commandLink>
 	  		</h:column>
 	  		
