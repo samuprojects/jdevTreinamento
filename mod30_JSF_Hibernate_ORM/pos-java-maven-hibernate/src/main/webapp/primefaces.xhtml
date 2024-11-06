@@ -23,12 +23,12 @@
 	</h:form>
 	  
 	  <h:form>
-	   <h:messages showDetail="true" showSummary="false"/>
+	   <p:messages showDetail="true" showSummary="false"/>
 	  	<p:panelGrid columns="2">
-		  	<h:outputLabel>Id:</h:outputLabel>
+		  	<p:outputLabel>Id:</p:outputLabel>
 		  	<p:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
 		  	
-		  	<h:outputLabel>Nome:</h:outputLabel>
+		  	<p:outputLabel>Nome:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome!"/>
 		  	
 		  	<h:outputLabel>Sobrenome:</h:outputLabel>
@@ -55,49 +55,49 @@
 	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" cellpadding="15" border="1">
 	  		<f:facet name="header">Lista de Usuários</f:facet>
 	  		
-	  		<h:column style="width:150px;">
+	  		<p:column style="width:150px;">
 	  		<f:facet name="header">Id</f:facet>
 	  			<h:outputText value="#{user.id}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Nome</f:facet>
 	  			<h:outputText value="#{user.nome}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Sobrenome</f:facet>
 	  			<h:outputText value="#{user.sobrenome}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Email</f:facet>
 	  			<h:outputText value="#{user.email}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Login</f:facet>
 	  			<h:outputText value="#{user.login}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Idade</f:facet>
 	  			<h:outputText value="#{user.idade}"/>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Editar</f:facet>
 	  			<h:commandLink value="Editar">
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
 	  			</h:commandLink>
-	  		</h:column>
+	  		</p:column>
 	  		
-	  		<h:column>
+	  		<p:column>
 	  		<f:facet name="header">Excluir</f:facet>
 	  			<h:commandLink value="Excluir" action="#{usuarioPessoaManagedBean.remover}">
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
 	  			</h:commandLink>
-	  		</h:column>
+	  		</p:column>
 	  		
 
 	  		
