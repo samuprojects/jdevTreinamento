@@ -76,7 +76,7 @@ public class UsuarioPessoaManagedBean {
 		
 		daoGeneric.salvar(usuarioPessoa);
 		list.add(usuarioPessoa);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!!"));
 		return "usuario-salvo";
 	}
 	
@@ -96,7 +96,7 @@ public class UsuarioPessoaManagedBean {
 			daoGeneric.removerUsuario(usuarioPessoa);
 			list.remove(usuarioPessoa);
 			usuarioPessoa = new UsuarioPessoa();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Excluído com sucesso!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Excluído com sucesso!!"));
 		
 		} catch (Exception e) {
 			if (e.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {
