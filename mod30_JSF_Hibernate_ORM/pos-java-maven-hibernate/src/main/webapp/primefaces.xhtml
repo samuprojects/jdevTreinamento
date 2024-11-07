@@ -86,10 +86,9 @@
 	  			</h:commandLink>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Excluir</f:facet>
+	  		<p:column headerText="Excluir">
 	  			<h:commandLink value="Excluir" action="#{usuarioPessoaManagedBean.remover}">
-	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
 	  			</h:commandLink>
 	  		</p:column>
 	  		
