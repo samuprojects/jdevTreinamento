@@ -31,57 +31,52 @@
 		  	<p:outputLabel>Nome:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}" required="true" requiredMessage="Informe o nome!"/>
 		  	
-		  	<h:outputLabel>Sobrenome:</h:outputLabel>
+		  	<p:outputLabel>Sobrenome:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome!"/>
 		  	
-		  	<h:outputLabel>Email:</h:outputLabel>
+		  	<p:outputLabel>Email:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}"/>
 		  	
-		  	<h:outputLabel>Idade:</h:outputLabel>
+		  	<p:outputLabel>Idade:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
 		  	
-		  	<h:outputLabel>Login:</h:outputLabel>
+		  	<p:outputLabel>Login:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login!"/>
 		  	
-		  	<h:outputLabel>Senha:</h:outputLabel>
+		  	<p:outputLabel>Senha:</p:outputLabel>
 		  	<p:password value="#{usuarioPessoaManagedBean.usuarioPessoa.senha}" required="true" requiredMessage="Informe a senha!"/>
 	  	
 	  	</p:panelGrid>
 	  	
-	  	<p:commandButton value="Salvar" action="#{usuarioPessoaManagedBean.salvar}"/>
+	  	<br/>
+	  	<br/>
 	  	
-	  	<p:commandButton value="Novo" action="#{usuarioPessoaManagedBean.novo}"/>
+	  	<p:commandButton value="Salvar" ajax="false" action="#{usuarioPessoaManagedBean.salvar}"/>
 	  	
-	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" cellpadding="15" border="1">
-	  		<f:facet name="header">Lista de Usuários</f:facet>
-	  		
-	  		<p:column style="width:150px;">
-	  		<f:facet name="header">Id</f:facet>
+	  	<p:commandButton value="Novo" ajax="false" action="#{usuarioPessoaManagedBean.novo}"/>
+	  	
+	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user">
+	  		<p:column headerText="Id">
 	  			<h:outputText value="#{user.id}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Nome</f:facet>
+	  		<p:column headerText="Nome">
 	  			<h:outputText value="#{user.nome}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Sobrenome</f:facet>
+	  		<p:column headerText="Sobrenome">
 	  			<h:outputText value="#{user.sobrenome}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Email</f:facet>
+	  		<p:column headerText="Email">
 	  			<h:outputText value="#{user.email}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Login</f:facet>
+	  		<p:column headerText="Login">
 	  			<h:outputText value="#{user.login}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Idade</f:facet>
+	  		<p:column headerText="Idade">
 	  			<h:outputText value="#{user.idade}"/>
 	  		</p:column>
 	  		
