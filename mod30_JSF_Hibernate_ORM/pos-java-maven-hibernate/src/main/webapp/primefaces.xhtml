@@ -22,7 +22,7 @@
 	
 	</h:form>
 	  
-	  <h:form>
+	  <h:form id="formulario">
 	   <p:messages showDetail="true" showSummary="false"/>
 	  	<p:panelGrid columns="2">
 		  	<p:outputLabel>Id:</p:outputLabel>
@@ -59,11 +59,16 @@
 	  	
 	  	<p:commandButton value="Salvar" ajax="false" action="#{usuarioPessoaManagedBean.salvar}"/>
 	  	
-	  	<p:commandButton value="Novo" ajax="false" action="#{usuarioPessoaManagedBean.novo}"/>
+	  	<p:commandButton value="Novo" immediate="true" action="#{usuarioPessoaManagedBean.novo}">
+	  		<f:ajax execute="@this" render="@form"/>
+	  	</p:commandButton> 
 	  	
 	  	<br/>
 	  	<br/>
 	  	
+	  	</h:form>
+	  	
+	  	<h:form id="formtable">
 	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" paginator="true" rows="4"
 	  				 size="small" reflow="true" resizableColumns="true" showGridlines="true">
 	  		<p:column headerText="Id">
@@ -91,14 +96,25 @@
 	  		</p:column>
 	  		
 	  		<p:column headerText="Editar">
-	  			<h:commandLink value="Editar">
+	  			<h:commandLink immediate="true" id="botaoeditar">
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
+	  				<f:ajax execute="botaoeditar"  render=":formulario"/>
+	  				<h:graphicImage url="resources/img/editar.png"/>
 	  			</h:commandLink>
 	  		</p:column>
 	  		
 	  		<p:column headerText="Excluir">
-	  			<h:commandLink value="Excluir" action="#{usuarioPessoaManagedBean.remover}">
+	  			<h:commandLink action="#{usuarioPessoaManagedBean.remover}" id="botaoremover">
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
+	  				<f:ajax execute="botaoremover"  render="@form :formulario"/>
+	  				<h:graphicImage url="resources/img/delete.png"/>
+	  			</h:commandLink>
+	  		</p:column>
+	  		
+	  		<p:column headerText="Telefones">
+	  			<h:commandLink  immediate="true" action="telefoneprimefaces.jsf" id="botaofone">
+	  				<h:graphicImage url="resources/img/telefone.png"/>
+	  				<f:param name="codigouser" value="#{user.id}"/>
 	  			</h:commandLink>
 	  		</p:column>
 	  		
