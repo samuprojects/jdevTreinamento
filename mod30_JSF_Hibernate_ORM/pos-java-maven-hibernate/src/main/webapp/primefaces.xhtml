@@ -55,7 +55,11 @@
 	  	
 	  	<p:commandButton value="Novo" ajax="false" action="#{usuarioPessoaManagedBean.novo}"/>
 	  	
-	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user">
+	  	<br/>
+	  	<br/>
+	  	
+	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" paginator="true" rows="4"
+	  				 size="small" reflow="true" resizableColumns="true" showGridlines="true">
 	  		<p:column headerText="Id">
 	  			<h:outputText value="#{user.id}"/>
 	  		</p:column>
