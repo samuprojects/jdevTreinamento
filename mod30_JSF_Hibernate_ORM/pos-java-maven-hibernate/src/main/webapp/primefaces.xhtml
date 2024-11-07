@@ -80,10 +80,9 @@
 	  			<h:outputText value="#{user.idade}"/>
 	  		</p:column>
 	  		
-	  		<p:column>
-	  		<f:facet name="header">Editar</f:facet>
+	  		<p:column headerText="Editar">
 	  			<h:commandLink value="Editar">
-	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"></f:setPropertyActionListener>
+	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
 	  			</h:commandLink>
 	  		</p:column>
 	  		
