@@ -38,7 +38,10 @@
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}" required="true" requiredMessage="Email obrigatório!"/>
 		  	
 		  	<p:outputLabel>Idade:</p:outputLabel>
-		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}"/>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" placeholder="Informe a idade"/>
+		  	
+		  	<p:outputLabel>Salário:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.salario}" placeholder="Informe o salário"/>
 		  	
 		  	<p:outputLabel>Sexo:</p:outputLabel>
 		  	<p:selectOneMenu value="#{usuarioPessoaManagedBean.usuarioPessoa.sexo}">
@@ -118,11 +121,11 @@
 	  			</h:commandLink>
 	  		</p:column>
 	  		
-
-	  		
 	  	</p:dataTable>
 	  	
 	  </h:form>
+	  
+	  <p:chart type="bar" model="#{usuarioPessoaManagedBean.barChartModel}" />
 	  
 </h:body>
 	  
