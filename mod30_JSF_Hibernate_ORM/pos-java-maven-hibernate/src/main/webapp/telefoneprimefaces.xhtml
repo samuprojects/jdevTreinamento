@@ -28,10 +28,10 @@
 	   <h:outputText value="#{telefoneManagedBean.user.nome}"/>
 	   
 	   <p:outputLabel>Número:</p:outputLabel>
-	   <p:inputText value="#{telefoneManagedBean.telefone.numero}"/>
+	   <p:inputText value="#{telefoneManagedBean.telefone.numero}" required="true" requiredMessage="Insira o telefone com DDD"/>
 	   
 	   <p:outputLabel>Tipo:</p:outputLabel>
-	   <p:inputText value="#{telefoneManagedBean.telefone.tipo}"/>
+	   <p:inputText value="#{telefoneManagedBean.telefone.tipo}" required="true" requiredMessage="Insira o tipo de telefone"/>
 	   
 	   </h:panelGrid>
 	   
