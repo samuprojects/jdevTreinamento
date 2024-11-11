@@ -21,7 +21,6 @@ public class TesteHibernate {
 		pessoa.setNome("John Dev");
 		pessoa.setSenha("123");
 		pessoa.setSobrenome("Silva");
-		pessoa.setEmail("johndev@example.com");
 		
 		daoGeneric.salvar(pessoa);
 	}
@@ -58,7 +57,6 @@ public class TesteHibernate {
 		pessoa.setIdade(99);
 		pessoa.setNome("Nome atualizado Hibernate");
 		pessoa.setSenha("sasas");
-		pessoa.setEmail("teste@example.com");
 		pessoa.setSobrenome("Java FX");
 		
 		pessoa = daoGeneric.updateMerge(pessoa);

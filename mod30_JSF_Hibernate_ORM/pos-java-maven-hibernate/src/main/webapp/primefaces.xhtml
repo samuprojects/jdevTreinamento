@@ -36,11 +36,6 @@
 		  	<p:outputLabel>Sobrenome:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.sobrenome}" required="true" requiredMessage="Informe o sobrenome!"/>
 		  	
-		  	<p:outputLabel>Email:</p:outputLabel>
-		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.email}" required="true" requiredMessage="Email obrigatório!" id="idemailpessoa">
-		  		<p:watermark value="Informe o email" for="idemailpessoa"></p:watermark>
-		  	</p:inputText>
-		  	
 		  	<p:outputLabel>Idade:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.idade}" />
 		  	
@@ -117,10 +112,6 @@
 	  		
 	  		<p:column headerText="Sobrenome">
 	  			<h:outputText value="#{user.sobrenome}"/>
-	  		</p:column>
-	  		
-	  		<p:column headerText="Email">
-	  			<h:outputText value="#{user.email}"/>
 	  		</p:column>
 	  		
 	  		<p:column headerText="Login">
