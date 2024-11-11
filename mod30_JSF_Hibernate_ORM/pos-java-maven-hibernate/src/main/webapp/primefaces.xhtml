@@ -101,7 +101,7 @@
 	  	
 	  	<h:form id="formtable">
 	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" paginator="true" rows="4"
-	  				 size="small" reflow="true" resizableColumns="true" showGridlines="true">
+	  				 size="small" reflow="true" resizableColumns="true" showGridlines="true" >
 	  		<p:column headerText="Id">
 	  			<h:outputText value="#{user.id}"/>
 	  		</p:column>
@@ -145,7 +145,18 @@
 	  			</h:commandLink>
 	  		</p:column>
 	  		
+	  		<p:column headerText="E-mails">
+	  			<p:commandLink update=":formtable:dialogEmail" oncomplete="PF('dialogEmail').show()">
+	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
+	  				<h:graphicImage url="resources/img/email.png"/>
+	  			</p:commandLink>
+	  		</p:column>
+	  		
 	  	</p:dataTable>
+	  	
+	  	<p:dialog header="E-mails" id="dialogEmail"  widgetVar="dialogEmail" position="center" modal="true" width="490px">
+	  	
+	  	</p:dialog>
 	  	
 	  </h:form>
 	  
