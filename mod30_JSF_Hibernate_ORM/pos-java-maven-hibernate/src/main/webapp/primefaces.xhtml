@@ -49,6 +49,35 @@
 		  		<f:selectItem itemValue="FEMININO" itemLabel="Feminino"/>
 		  	</p:selectOneMenu>
 		  	
+		  	<p:outputLabel>Cep:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.cep}" id="cepuser" required="true" requiredMessage="Informe o CEP!">
+		  		<f:ajax event="blur" execute="@this" render="logradouro complemento bairro localidade uf unidade ibge gia" listener="#{usuarioPessoaManagedBean.pesquisaCep}"/>
+		  	</p:inputText>
+		  	
+		  	<p:outputLabel>Logradouro:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.logradouro}" id="logradouro" required="true" requiredMessage="Informe o CEP para preencher o endereço!"/>
+		  	
+		  	<p:outputLabel>Complemento:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.complemento}" id="complemento"/>
+		  	
+		  	<p:outputLabel>Bairro:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.bairro}" id="bairro" required="true" requiredMessage="Informe o CEP para preencher o bairro!"/>
+		  	
+		  	<p:outputLabel>Localidade:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.localidade}" id="localidade" required="true" requiredMessage="Informe o CEP para preencher a localidade!"/>
+		  	
+		  	<p:outputLabel>Uf:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.uf}" id="uf" required="true" requiredMessage="Informe o CEP para preencher a UF"/>
+		  	
+		  	<p:outputLabel>Unidade:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.unidade}" id="unidade"/>
+		  	
+		  	<p:outputLabel>Ibge:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.ibge}" id="ibge"/>
+		  	
+		  	<p:outputLabel>Gia:</p:outputLabel>
+		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.gia}" id="gia"/>
+		  	
 		  	<p:outputLabel>Login:</p:outputLabel>
 		  	<p:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.login}" required="true" requiredMessage="Informe o login!"/>
 		  	
