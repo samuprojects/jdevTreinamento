@@ -108,6 +108,15 @@ public class UsuarioPessoaManagedBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado:","Salvo com sucesso!"));
 	}
 	
+	public void removerEmail() throws Exception {
+		String codigoemail = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codigoemail");
+		EmailUser remover = new EmailUser();
+		remover.setId(Long.parseLong(codigoemail));
+		daoEmail.deletarPorId(remover);
+		usuarioPessoa.getEmails().remove(remover);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resultado:","Excluído com sucesso!"));
+	}
+	
 	public String salvar() {
 		
 		daoGeneric.salvar(usuarioPessoa);
