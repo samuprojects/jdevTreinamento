@@ -23,7 +23,7 @@
 	</h:form>
 	  
 	  <h:form id="formulario">
-	   <p:messages showDetail="true" showSummary="false"/>
+	   <p:growl showDetail="true" showSummary="false" autoUpdate="true"/>
 	  	<p:panelGrid columns="2">
 		  	<p:outputLabel>Id:</p:outputLabel>
 		  	<p:inputText readonly="true" value="#{usuarioPessoaManagedBean.usuarioPessoa.id}"/>
@@ -154,7 +154,16 @@
 	  		
 	  	</p:dataTable>
 	  	
-	  	<p:dialog header="E-mails" id="dialogEmail"  widgetVar="dialogEmail" position="center" modal="true" width="490px">
+	  	<p:dialog header="E-mails" id="dialogEmail"  widgetVar="dialogEmail" position="center" modal="true" width="490px" resizable="false">
+	  	
+	  		<p:panelGrid columns="3">
+	  			<h:outputLabel value="E-mail"/>
+	  			<p:inputText value="#{usuarioPessoaManagedBean.emailUser.email}" id="emailuseradd"/>
+	  			<p:commandButton value="Adicionar" actionListener="#{usuarioPessoaManagedBean.addEmail}" update="emailuseradd">
+	  			
+	  			</p:commandButton>
+	  		
+	  		</p:panelGrid>
 	  	
 	  	</p:dialog>
 	  	
