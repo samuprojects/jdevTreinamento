@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,10 +34,10 @@ public class UsuarioPessoa {
 	private int idade;
 	private Double salario;
 	
-	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<TelefoneUser> telefoneUsers = new ArrayList<TelefoneUser>();
 	
-	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuarioPessoa", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<EmailUser> emails = new ArrayList<EmailUser>();
 	
 	public void setEmails(List<EmailUser> emails) {
