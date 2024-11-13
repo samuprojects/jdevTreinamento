@@ -35,11 +35,16 @@ public class UsuarioPessoaManagedBean {
 	private BarChartModel barChartModel = new BarChartModel();
 	private EmailUser emailUser = new EmailUser();
 	private DaoEmail<EmailUser> daoEmail = new DaoEmail<EmailUser>();
+	private String campoPesquisa;
 	
 	@PostConstruct
 	public void init( ) {
 		list = daoGeneric.listar(UsuarioPessoa.class);
 		
+		montarGrafico();
+	}
+
+	private void montarGrafico() {
 		ChartSeries userSalario = new ChartSeries(); // Grupo de funcionários
 		
 		for (UsuarioPessoa usuarioPessoa : list) { // Adicionar salário para o grupo
@@ -155,6 +160,19 @@ public class UsuarioPessoaManagedBean {
 		}
 		
 		return "";
+	}
+	
+	public void pesquisar() {
+		list = daoGeneric.pesquisar(campoPesquisa);
+		montarGrafico();
+	}
+	
+	public void setCampoPesquisa(String campoPesquisa) {
+		this.campoPesquisa = campoPesquisa;
+	}
+	
+	public String getCampoPesquisa() {
+		return campoPesquisa;
 	}
 	
 	
