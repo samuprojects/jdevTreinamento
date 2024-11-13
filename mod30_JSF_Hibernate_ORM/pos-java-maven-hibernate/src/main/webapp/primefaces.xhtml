@@ -124,7 +124,7 @@
 	  			<center>
 	  			<h:commandLink action="#{usuarioPessoaManagedBean.remover}" id="botaoremover">
 	  				<f:setPropertyActionListener value="#{user}" target="#{usuarioPessoaManagedBean.usuarioPessoa}"/>
-	  				<f:ajax execute="botaoremover"  render="@form :formulario"/>
+	  				<f:ajax execute="botaoremover"  render="@form :formulario :graficosalario"/>
 	  				<h:graphicImage url="resources/img/delete.png"/>
 	  			</h:commandLink>
 	  			</center>
@@ -183,7 +183,7 @@
 	  	
 	  </h:form>
 	  
-	  <p:chart type="bar" model="#{usuarioPessoaManagedBean.barChartModel}" />
+	  <p:chart type="bar" model="#{usuarioPessoaManagedBean.barChartModel}" id="graficosalario" />
 	  
 </h:body>
 	  
