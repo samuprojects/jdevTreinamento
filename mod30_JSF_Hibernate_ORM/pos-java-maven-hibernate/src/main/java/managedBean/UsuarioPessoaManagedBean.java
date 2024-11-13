@@ -14,7 +14,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.xml.bind.DatatypeConverter;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
@@ -173,6 +175,13 @@ public class UsuarioPessoaManagedBean {
 	
 	public String getCampoPesquisa() {
 		return campoPesquisa;
+	}
+	
+	public void upload(FileUploadEvent image) {
+		
+		String imagem = "data:imagem/png;base64," + DatatypeConverter.printBase64Binary(image.getFile().getContents());
+		usuarioPessoa.setImagem(imagem);
+		
 	}
 	
 	
