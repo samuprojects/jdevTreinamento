@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +28,7 @@ import com.google.gson.Gson;
 
 import dao.DaoEmail;
 import dao.DaoUsuario;
+import datatablelazy.LazyDataTableModelUserPessoa;
 import model.EmailUser;
 import model.UsuarioPessoa;
 
@@ -37,7 +37,7 @@ import model.UsuarioPessoa;
 public class UsuarioPessoaManagedBean {
 	
 	private UsuarioPessoa usuarioPessoa = new UsuarioPessoa();
-	private List<UsuarioPessoa> list = new ArrayList<UsuarioPessoa>();
+	private LazyDataTableModelUserPessoa<UsuarioPessoa> list = new LazyDataTableModelUserPessoa<UsuarioPessoa>();
 	private DaoUsuario<UsuarioPessoa> daoGeneric = new DaoUsuario<UsuarioPessoa>();
 	private BarChartModel barChartModel = new BarChartModel();
 	private EmailUser emailUser = new EmailUser();
@@ -46,15 +46,14 @@ public class UsuarioPessoaManagedBean {
 	
 	@PostConstruct
 	public void init( ) {
-		list = daoGeneric.listar(UsuarioPessoa.class);
-		
+		list.load(0, 5, null, null, null);		
 		montarGrafico();
 	}
 
 	private void montarGrafico() {
 		ChartSeries userSalario = new ChartSeries(); // Grupo de funcionários
 		
-		for (UsuarioPessoa usuarioPessoa : list) { // Adicionar salário para o grupo
+		for (UsuarioPessoa usuarioPessoa : list.list) { // Adicionar salário para o grupo
 			userSalario.set(usuarioPessoa.getNome(), usuarioPessoa.getSalario());
 		}
 		barChartModel.addSeries(userSalario); // Adicionar o grupo
@@ -132,7 +131,7 @@ public class UsuarioPessoaManagedBean {
 	public String salvar() {
 		
 		daoGeneric.salvar(usuarioPessoa);
-		list.add(usuarioPessoa);
+		list.list.add(usuarioPessoa);
 		usuarioPessoa = new UsuarioPessoa();
 		init();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Salvo com sucesso!!"));
@@ -145,15 +144,15 @@ public class UsuarioPessoaManagedBean {
 		return "";
 	}
 	
-	public List<UsuarioPessoa> getList() {
-		
+	public LazyDataTableModelUserPessoa<UsuarioPessoa> getList() {
+		montarGrafico();
 		return list;
 	}
 	
 	public String remover() {
 		try {
 			daoGeneric.removerUsuario(usuarioPessoa);
-			list.remove(usuarioPessoa);
+			list.list.remove(usuarioPessoa);
 			usuarioPessoa = new UsuarioPessoa();
 			init();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação: ", "Excluído com sucesso!!"));
@@ -170,7 +169,7 @@ public class UsuarioPessoaManagedBean {
 	}
 	
 	public void pesquisar() {
-		list = daoGeneric.pesquisar(campoPesquisa);
+		list.pesquisar(campoPesquisa);
 		montarGrafico();
 	}
 	

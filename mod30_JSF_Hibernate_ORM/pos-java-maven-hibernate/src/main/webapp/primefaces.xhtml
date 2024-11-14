@@ -121,7 +121,7 @@
 	  	
 	  	<h:form id="formtable">
 	  	<p:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" paginator="true" rows="4"
-	  				 size="small" reflow="true" resizableColumns="true" showGridlines="true" >
+	  				 lazy="true" paginatorPosition="bottom" paginatorTemplate="{FirstPageLink} {PageLinks} {LastPageLink}" showGridlines="true" >
 	  		<p:column headerText="Id" width="20">
 	  			<h:outputText value="#{user.id}"/>
 	  		</p:column>
