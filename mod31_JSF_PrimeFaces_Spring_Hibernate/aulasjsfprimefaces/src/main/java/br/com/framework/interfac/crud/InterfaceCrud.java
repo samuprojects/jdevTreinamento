@@ -58,7 +58,7 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	Query obterQuery(String query) throws Exception; // para realizar consultas dinâmicas nos registros do banco
 	
-	// para realizar carregamento por demanda
+	// para realizar carregamento por demanda, dinamicamente com JSF e PrimeFaces
 	List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception; 
 
 }
