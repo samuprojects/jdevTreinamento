@@ -18,5 +18,23 @@
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.generate_statistics">false</property>	
+		
+		
+		<mapping class=""/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-delete"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-recreate"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-update"/>
+		
+		<listener class="org.hibernate.envers.event.AuditEventListener" type="post-collection-remove"/>
+		
+		
+		
 	</session-factory>
 </hibernate-configuration>
