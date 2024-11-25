@@ -19,7 +19,7 @@
 	minEvictableIdleTimeMillis="60000"
 	antiJARLocking="false"
 	antiResourceLocking="false"
-	username="admin"
+	username="postgres"
 	password="admin"
 	url="jdbc:postgresql://localhost:5432/ebook_jee?autoReconect=true"/>
 	
