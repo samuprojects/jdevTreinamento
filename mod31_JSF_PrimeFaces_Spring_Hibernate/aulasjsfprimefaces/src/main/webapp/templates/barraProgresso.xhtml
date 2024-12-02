@@ -7,7 +7,7 @@
 
 	<ui:composition>
 	
-		<p:ajax onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+		<p:ajaxStatus id="ajaxStatus" onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
 	
 		<p:dialog id="dialogAjaxStatus" modal="true" widgetVar="statusDialog" 
 		height="200px;" width="200px;" header="Processando" footer="Aguarde..."
