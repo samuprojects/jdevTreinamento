@@ -6,18 +6,6 @@
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:p="http://primefaces.org/ui">
 
-
-<h:head>
-</h:head>
-
-<h:form>
-	<h:body>
-		<ui:include src="/templates/barraProgresso.xhtml"/>
-		<h1>Principal</h1>
-		
-		
-		<p:commandButton value="Testar status" ajax="true"/>
-	</h:body>
-
-</h:form>
+<ui:composition template="/templates/templatePrincipal.xhtml">
+</ui:composition>
 </html>
