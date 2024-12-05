@@ -49,6 +49,10 @@ function abrirMenupop(){
 function fecharMenupop(){
 	if ($("#menupop").is(":visible")){
 		$("#menupop").hide("slow");
-	}
-		
+	}	
+}
+
+function redirecionarPagina(context, pagina) {
+	pagina = pagina + ".jsf";
+	document.location = context + pagina;
 }
