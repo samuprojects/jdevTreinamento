@@ -6,7 +6,7 @@
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:p="http://primefaces.org/ui">
 
-<sec:isAutenticated>
+<sec:isAuthenticated>
 
 	<h:head>
 	 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -66,7 +66,7 @@
 	 				</span>
 	 				
 	 				<span id="meuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px;" >
-	 					<a href="#" onclick="abrirMenupop();">
+	 					<a href="#" onclick="abrirMenupop()">
 	 						<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaimagem" id="imgSetaBaixo"/>
 	 					</a>
 	 				</span>
@@ -136,6 +136,6 @@
 	 </script>
 	
 
-</sec:isAutenticated>
+</sec:isAuthenticated>
 
 </html>
