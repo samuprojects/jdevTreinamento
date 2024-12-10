@@ -31,7 +31,7 @@ public class Cidade implements Serializable {
 	@IdentificarCampoPesquisa(descricaoCampo = "Código", campoConsulta = "cid_codigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade_seq")
-	private Long cid_cod;
+	private Long cid_codigo;
 	
 	@IdentificarCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cid_descricao", principal = 1)
 	@Column(length = 100, nullable = false)
@@ -48,12 +48,12 @@ public class Cidade implements Serializable {
 	@Column(name = "versionNum")
 	private int versionNum;
 
-	public Long getCid_cod() {
-		return cid_cod;
+	public Long getCid_codigo() {
+		return cid_codigo;
 	}
 
-	public void setCid_cod(Long cid_cod) {
-		this.cid_cod = cid_cod;
+	public void setCid_codigo(Long cid_codigo) {
+		this.cid_codigo = cid_codigo;
 	}
 
 	public String getCid_descricao() {
@@ -82,7 +82,7 @@ public class Cidade implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cid_cod);
+		return Objects.hash(cid_codigo);
 	}
 
 	@Override
@@ -94,12 +94,12 @@ public class Cidade implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cidade other = (Cidade) obj;
-		return Objects.equals(cid_cod, other.cid_cod);
+		return Objects.equals(cid_codigo, other.cid_codigo);
 	}
 
 	@Override
 	public String toString() {
-		return "Cidade [cid_cod=" + cid_cod + ", cid_descricao=" + cid_descricao + "]";
+		return "Cidade [cid_cod=" + cid_codigo + ", cid_descricao=" + cid_descricao + "]";
 	}
 	
 	
