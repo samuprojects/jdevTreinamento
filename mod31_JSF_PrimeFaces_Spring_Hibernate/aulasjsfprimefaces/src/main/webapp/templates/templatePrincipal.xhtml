@@ -45,13 +45,13 @@
 	 		</script>
 	 		<ui:include src="/templates/barraProgresso.xhtml"/>
 	 		<div id="msgError">
-	 			<p:growl id="msg" showDetail="false" sticky="true" redisplay="true" autoUpdate="true" life="6000"/>
+	 			<p:growl id="msg" showDetail="false" sticky="true" redisplay="true" autoUpdate="true" life="500"/>
 	 			<p:tooltip id="toolTipFocus" globalSelector="a, :input, :button" showEvent="focus" hideEvent="blur"/>
 	 		</div>
 	 		
 	 		<div id="container">
 	 			<div id="topo">
-	 				<span style="position: absolute; left: 20px; top: 14px;" id="spanLogo">
+	 				<span style="position: absolute; left: 20px; top: 14px" id="spanLogo">
 	 					<h:graphicImage library="img" name="logo.png" id="logoImg" styleClass="bordaImagem"/>	 				
 	 				</span>
 	 				<span id="dadosLogin"> Usuário: #{entidadeBeanView.usuarioLogadoSecurity}
@@ -65,7 +65,7 @@
 	 					<a href="#" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
 	 				</span>
 	 				
-	 				<span id="meuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px;" >
+	 				<span id="meuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px" >
 	 					<a href="#" onclick="abrirMenupop()">
 	 						<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaimagem" id="imgSetaBaixo"/>
 	 					</a>

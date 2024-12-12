@@ -24,6 +24,10 @@
 						 maxlength="100" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" 
 						 requiredMessage="Informe o nome da cidade"/>
 						 <p:message for="cidadeNome"/>
+						 
+						 <p:selectOneMenu>
+						 	<f:selectItems value="#{estadoBeanView.estados}"/>
+						 </p:selectOneMenu>
 					</h:panelGrid>
 				</p:panel>
 				
