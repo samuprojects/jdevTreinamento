@@ -37,6 +37,54 @@
 				
 				<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}"/>
 			</h:form>
+			
+			<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto"
+				emptyMessage="Não existem valores para exibição.">
+				
+				<p:column>
+					<center>
+						<f:facet name="header">Código</f:facet>
+						<h:outputText value="#{objeto.cid_codigo}"/>
+					</center>
+				</p:column>
+				
+				<p:column>
+					<center>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{objeto.cid_descricao}"/>
+					</center>
+				</p:column>
+				
+				<p:column>
+					<center>
+						<f:facet name="header">Estado</f:facet>
+						<h:outputText value="#{objeto.estado.est_nome}"/>
+					</center>
+				</p:column>
+				
+				<p:column>
+					<center>
+						<f:facet name="header">Editar</f:facet>
+						<p:commandLink action="#{cidadeBeanView.editar}" update="@form:formCadastro" 
+							id="editarCidade" value="Editar" ajax="true" immediate="true">
+							<f:setPropertyActionListener 
+							value="#{cidadeBeanView.objetoSelecionado}" target="#{objeto}"/>
+						</p:commandLink>
+					</center>
+				</p:column>
+				
+				<p:column>
+					<center>
+						<f:facet name="header">Excluir</f:facet>
+						<p:commandLink action="#{cidadeBeanView.excluir}" update="tableResult" 
+							id="excluirCidade" value="Excluir" ajax="true" immediate="true">
+							<f:setPropertyActionListener 
+							value="#{cidadeBeanView.objetoSelecionado}" target="#{objeto}"/>
+						</p:commandLink>
+					</center>
+				</p:column>
+			
+			</p:dataTable>
 		
 		</ui:define>
 	</ui:composition>

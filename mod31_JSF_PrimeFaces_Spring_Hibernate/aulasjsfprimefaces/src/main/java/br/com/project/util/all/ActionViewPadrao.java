@@ -14,12 +14,16 @@ public interface ActionViewPadrao extends Serializable {
 	
 	abstract void saveEdit() throws Exception;
 	
+	abstract void excluir() throws Exception;
+	
 	/**
 	 * @PostConstruct realizar inicialização de métodos, valores ou variáveis
 	 * @throws Exception
 	 */
 	@PostConstruct
 	abstract String novo() throws Exception;
+	
+	abstract String editar() throws Exception;
 	
 	abstract void definirVariaveisNulas() throws Exception;
 	

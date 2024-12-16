@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class BeanViewAbstract implements ActionViewPadrao {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void limparLista() throws Exception {
 		
