@@ -27,4 +27,14 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public Date getUltimoAcesso() throws Exception {
 		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
 	}
+
+	@Override
+	public void excluir() throws Exception {
+		
+	}
+
+	@Override
+	public String editar() throws Exception {
+		return null;
+	}
 }

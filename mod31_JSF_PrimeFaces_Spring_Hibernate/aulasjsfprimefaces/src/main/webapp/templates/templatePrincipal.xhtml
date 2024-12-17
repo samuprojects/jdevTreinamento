@@ -28,25 +28,25 @@
 	 </h:head>
 	 
 	 <h:form id="formTemplate" prependId="false">
-	 		<h:outputStylesheet name="estilo.css" library="css" id="cssStyleSystem"/>
+	 		<h:outputStylesheet name="estilo.css" library="css" id="cssStiloSistema"/>
 	 	<h:body>
 	 		<script type="text/javascript" charset="UTF-8">
 	 			$.noConflict();
 	 			localeData_pt_br();
 	 			initTemplate();
-	 			ocultarMenu();
+	 		ocultarMenu();
 	 			
 	 			/*Bloquear F5*/
 	 			$(document).keydown(function(e)) {
 					if (e.which == 116) {
-						return 116;
+						return false;
 					}
 				});
 	 		</script>
 	 		<ui:include src="/templates/barraProgresso.xhtml"/>
 	 		<div id="msgError">
 	 			<p:growl id="msg" showDetail="false" sticky="true" redisplay="true" autoUpdate="true" life="500"/>
-	 			<p:tooltip id="toolTipFocus" globalSelector="a, :input, :button" showEvent="focus" hideEvent="blur"/>
+	 			<p:tooltip id="toolTipFocus" globalSelector="a,:input, :button" showEvent="focus" hideEvent="blur"/>
 	 		</div>
 	 		
 	 		<div id="container">
@@ -57,17 +57,17 @@
 	 				<span id="dadosLogin"> Usuário: #{entidadeBeanView.usuarioLogadoSecurity}
 	 					<br id = "quebraUser"/>
 	 					Último login:
-	 					<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}"
-	 					id="saidaUltimoAcesso">
-	 						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
+	 					<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
+	 						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss" 
+	 						dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
 	 					</h:outputLabel>
 	 					<br id="quebraUltimoAcesso"/>
-	 					<a href="#" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
+	 					<a href="#" id="logoutSuperior" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
 	 				</span>
 	 				
 	 				<span id="meuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px" >
 	 					<a href="#" onclick="abrirMenupop()">
-	 						<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaimagem" id="imgSetaBaixo"/>
+	 						<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaimagem" id="imaSetaBaixo"/>
 	 					</a>
 	 				</span>
 	 				
@@ -91,8 +91,9 @@
 	 			<div id="menupop">
 	 			
 	 				<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
-	 					<p:commandLink actionListener="#{mensagemBeanView.novo}" onsuccess="enviarMsgDialog.show();" value="Enviar mensagem" 
-	 					immediate="true" style="display:block;" id="enviarMensagem" ajax="true" process="@this">
+	 					<p:commandLink actionListener="#{mensagemBeanView.novo}" onsuccess="enviarMsgDialog.show();"
+	 					value="Enviar mensagem" immediate="true"
+	 					style="display:block;" id="enviarMensagem" ajax="true" process="@this">
 	 						<p:ajax immediate="true" listener="#{mensagemBeanView.novo}"/>
 	 					
 	 					</p:commandLink>
@@ -100,16 +101,17 @@
 	 				</sec:ifAnyGranted>
 	 				
 	 				<a href="#" onclick="alterarSenhaDialog.show();" style="display: block;" id="alterarSenha">
-	 					<span style="display: block;" id="spanAlterarSenha" >Alterar Senha</span>
+	 					<span style="display:block;" id="spanAlterarSenha" >Alterar Senha</span>
 	 				</a>
 	 			</div>
 	 			
 	 			<div id="barramenu">
-	 				<p:tieredMenu id="menuEsquerdo" style="width:185px; border: none; background none; color:#000;">
+	 				<p:tieredMenu 
+	 					id="menuEsquerdo" style="width:185px; border: none; background: none; color: #000;">
 	 				
 	 					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
-	 					
 	 						<p:submenu label="Cadastros" id="subMenuCadastro">
+	 						
 	 							<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
 		 							<p:menuitem value="Cidade" id="menuCidade"
 		 								action="/cadastro/cad_cidade.jsf?faces-redirect=true">
@@ -121,10 +123,12 @@
 	 					
 	 					</sec:ifAnyGranted>
 	 				
-	 					<p:menuitem value="Início" id="menuinicio" onclick="redirecionarPagina('#{request.contextPath}',
-	 							'/restrito/principal');" ajax="true"/>
+	 					<p:menuitem value="Início" id="menuinicio" 
+	 						onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+	 						ajax="true"/>
 	 				
-	 					<p:menuitem onclick="javascript:logout('#{request.contextPath}');" value="Sair" id="menusair" 
+	 					<p:menuitem onclick="javascript:logout('#{request.contextPath}');" 
+	 					value="Sair" id="menusair" 
 	 					ajax="true"/>
 	 				</p:tieredMenu>
 	 			</div>

@@ -26,4 +26,14 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 		return estadoController.getListEstado();
 	}
 
+	@Override
+	public void excluir() throws Exception {
+		
+	}
+
+	@Override
+	public String editar() throws Exception {
+		return null;
+	}
+
 }

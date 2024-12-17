@@ -20,4 +20,14 @@ public class MensagemBeanView extends BeanManagedViewAbstract {
 		return "";
 	}
 
+	@Override
+	public void excluir() throws Exception {
+		
+	}
+
+	@Override
+	public String editar() throws Exception {
+		return null;
+	}
+
 }
