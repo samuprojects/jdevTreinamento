@@ -84,6 +84,16 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public void excluir() throws Exception {
+		
+	}
+
+	@Override
+	public String editar() throws Exception {
+		return null;
+	}
 	
 	
 
