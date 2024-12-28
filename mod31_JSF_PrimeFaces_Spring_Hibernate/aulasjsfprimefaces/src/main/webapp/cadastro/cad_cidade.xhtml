@@ -38,9 +38,10 @@
 				
 				<div class="espacoBranco" />
 				
-				<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/>
+				<util:botoesCrud managedBeanView="#{cidadeBeanView}">
 				
-				<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}"/>
+				</util:botoesCrud>
+				
 			</h:form>
 			
 			<script type="text/javascript" charset="UTF-8">
