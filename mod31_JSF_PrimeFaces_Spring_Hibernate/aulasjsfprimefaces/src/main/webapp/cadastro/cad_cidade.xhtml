@@ -40,7 +40,9 @@
 				
 				<util:botoesCrud managedBeanView="#{cidadeBeanView}"
 				camposReload=":formTemplate:msg, tableResult"
-				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}">
+				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+				>
 				
 				</util:botoesCrud>
 				
